@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>스틸 & 밤 러프 프로토타입</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">섯다 미니게임 프로토타입</p>
+          <h1>스틸 & 밤</h1>
+        </div>
+        <div class="setup">
+          <label for="playerCount">참여 인원</label>
+          <select id="playerCount" aria-label="참여 인원">
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명</option>
+            <option value="5">5명</option>
+            <option value="6" selected>6명</option>
+            <option value="7">7명</option>
+            <option value="8">8명</option>
+          </select>
+          <button id="newGameBtn" type="button">새 게임</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="guide card-panel" aria-label="족보 가이드">
+          <div class="panel-title">
+            <span>족보 순위</span>
+            <small>높은 순</small>
+          </div>
+          <ol class="rank-list">
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_March_Hikari.png" alt="3월 광" />
+                <img src="./assets/hanafuda/Hanafuda_August_Hikari.png" alt="8월 광" />
+              </div>
+              <b>삼팔광땡</b><span>3광 + 8광</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_January_Hikari.png" alt="1월 광" />
+                <img src="./assets/hanafuda/Hanafuda_August_Hikari.png" alt="8월 광" />
+              </div>
+              <b>일팔광땡</b><span>1광 + 8광</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_January_Hikari.png" alt="1월 광" />
+                <img src="./assets/hanafuda/Hanafuda_March_Hikari.png" alt="3월 광" />
+              </div>
+              <b>일삼광땡</b><span>1광 + 3광</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_October_Tane.png" alt="10월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_October_Tanzaku.png" alt="10월 카드" />
+              </div>
+              <b>땡</b><span>같은 월 2장</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_January_Tanzaku.png" alt="1월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_February_Tane.png" alt="2월 카드" />
+              </div>
+              <b>알리</b><span>1월 + 2월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_January_Tanzaku.png" alt="1월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_April_Tane.png" alt="4월 카드" />
+              </div>
+              <b>독사</b><span>1월 + 4월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_September_Tane.png" alt="9월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_January_Tanzaku.png" alt="1월 카드" />
+              </div>
+              <b>구삥</b><span>9월 + 1월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_October_Tane.png" alt="10월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_January_Tanzaku.png" alt="1월 카드" />
+              </div>
+              <b>장삥</b><span>10월 + 1월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_October_Tane.png" alt="10월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_April_Tane.png" alt="4월 카드" />
+              </div>
+              <b>장사</b><span>10월 + 4월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_April_Tane.png" alt="4월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_June_Tane.png" alt="6월 카드" />
+              </div>
+              <b>세륙</b><span>4월 + 6월</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_July_Tane.png" alt="7월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_August_Tane.png" alt="8월 카드" />
+              </div>
+              <b>끗</b><span>합 끝자리</span>
+            </li>
+            <li>
+              <div class="rank-example">
+                <img src="./assets/hanafuda/Hanafuda_June_Tane.png" alt="6월 카드" />
+                <img src="./assets/hanafuda/Hanafuda_April_Tane.png" alt="4월 카드" />
+              </div>
+              <b>망통</b><span>0끗</span>
+            </li>
+          </ol>
+        </aside>
+
+        <section class="board card-panel" aria-label="게임판">
+          <div class="board-head">
+            <div>
+              <p id="phaseLabel" class="phase-label">준비 중</p>
+              <h2 id="turnTitle">게임 시작</h2>
+            </div>
+            <div class="round-pill" id="roundPill">3턴 종료</div>
+          </div>
+
+          <div class="table-wrap">
+            <div class="table">
+              <div class="table-center">
+                <div class="deck-zone">
+                  <div class="deck-card">덱</div>
+                  <span id="deckCount">0장</span>
+                </div>
+                <div class="bomb-token" aria-hidden="true">
+                  <span></span>
+                </div>
+                <div class="discard-zone">
+                  <div id="discardCard" class="small-card muted">없음</div>
+                  <span>최근 교체</span>
+                </div>
+              </div>
+              <div id="seatLayer" class="seat-layer"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="info card-panel" aria-label="상태 정보">
+          <div class="panel-title">
+            <span>플레이어 상태</span>
+            <small id="currentHint">-</small>
+          </div>
+          <div id="playerStatus" class="player-status"></div>
+
+          <div class="panel-title log-title">
+            <span>최근 로그</span>
+            <small>최신순</small>
+          </div>
+          <ul id="logList" class="log-list"></ul>
+        </aside>
+      </main>
+
+      <section class="hand-panel">
+        <div class="hand-copy">
+          <span class="label">내 패</span>
+          <strong id="myBest">-</strong>
+          <small id="myTip">폭탄을 끝까지 들고 있으면 최하위입니다.</small>
+        </div>
+        <div id="myHand" class="my-hand" aria-label="내 카드"></div>
+        <div class="actions">
+          <button id="primaryAction" type="button">시작</button>
+          <button id="fastAction" class="secondary" type="button">내 차례까지</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="choiceModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <p id="modalKicker" class="phase-label">도난 단계</p>
+            <h2 id="modalTitle">카드를 선택하세요</h2>
+          </div>
+          <button id="closeModalBtn" class="icon-btn" type="button" aria-label="닫기">×</button>
+        </div>
+        <p id="modalCopy" class="modal-copy"></p>
+        <div id="modalCards" class="choice-cards"></div>
+      </div>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

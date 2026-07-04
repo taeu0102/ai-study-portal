@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Study Portal</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="AI Study Portal 홈">
+          <span class="brand-mark">AI</span>
+          <span>Study Portal</span>
+        </a>
+
+        <nav class="nav-links" aria-label="주요 메뉴">
+          <a href="#projects">결과물</a>
+          <a href="#notes">스터디 노트</a>
+          <a href="#feedback">피드백</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <div class="search-box">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input id="searchInput" type="search" placeholder="결과물 검색" />
+          </div>
+          <button class="icon-button" id="openAdminButton" type="button" aria-label="관리자">
+            <i data-lucide="lock-keyhole"></i>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">AI STUDY OUTPUTS</p>
+            <h1>AI 스터디 결과물</h1>
+            <p>직접 실행해보고, 사용법과 제작 과정을 확인하세요.</p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#projects">
+                <i data-lucide="play"></i>
+                테스트하기
+              </a>
+              <a class="secondary-button" href="#notes">
+                <i data-lucide="book-open"></i>
+                노트 보기
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-label="요약 현황">
+            <div class="metric">
+              <span id="metricTotal">0</span>
+              <strong>공개 결과물</strong>
+            </div>
+            <div class="metric">
+              <span id="metricCategories">0</span>
+              <strong>카테고리</strong>
+            </div>
+            <div class="metric">
+              <span id="metricTests">0</span>
+              <strong>누적 테스트</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="toolbar" aria-label="결과물 필터">
+          <div class="tabs" id="categoryTabs"></div>
+          <div class="sort-box">
+            <i data-lucide="arrow-up-down" aria-hidden="true"></i>
+            <select id="sortSelect" aria-label="정렬">
+              <option value="latest">최근 업데이트</option>
+              <option value="popular">인기순</option>
+              <option value="title">이름순</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="content-grid" id="projects">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PUBLIC PORTAL</p>
+              <h2>결과물</h2>
+            </div>
+            <button class="ghost-button" id="clearFiltersButton" type="button">
+              <i data-lucide="rotate-ccw"></i>
+              초기화
+            </button>
+          </div>
+          <div class="project-grid" id="projectGrid"></div>
+        </section>
+
+        <section class="notes-band" id="notes">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">STUDY NOTES</p>
+              <h2>스터디 노트</h2>
+            </div>
+          </div>
+          <div class="note-list">
+            <article>
+              <span>01</span>
+              <strong>프롬프트 구조화</strong>
+              <p>목적, 입력, 출력 형식, 예외 조건을 분리해 재사용성을 높인 실험 기록.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <strong>업무 자동화 패턴</strong>
+              <p>반복 문서 작성과 요약 업무를 자동화할 때 필요한 검수 체크포인트.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <strong>테스트 피드백</strong>
+              <p>사용자 테스트 로그를 바탕으로 결과물을 개선하는 운영 메모.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="feedback-band" id="feedback">
+          <div>
+            <p class="eyebrow">FEEDBACK</p>
+            <h2>테스트 의견</h2>
+          </div>
+          <form class="feedback-form">
+            <input type="text" placeholder="이름" aria-label="이름" />
+            <input type="email" placeholder="이메일" aria-label="이메일" />
+            <textarea placeholder="의견" aria-label="의견"></textarea>
+            <button class="primary-button" type="button">
+              <i data-lucide="send"></i>
+              보내기
+            </button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <aside class="admin-drawer" id="adminDrawer" aria-hidden="true">
+      <div class="drawer-backdrop" id="closeAdminBackdrop"></div>
+      <section class="drawer-panel" aria-label="관리자 CMS">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">ADMIN CMS</p>
+            <h2>관리자 CMS</h2>
+          </div>
+          <button class="icon-button" id="closeAdminButton" type="button" aria-label="닫기">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <form class="login-panel" id="loginPanel">
+          <div class="auth-message" id="authMessage">Supabase 인증으로 관리자만 접근합니다.</div>
+          <label>
+            <span>이메일</span>
+            <input id="adminEmail" type="email" placeholder="owner@example.com" autocomplete="username" />
+          </label>
+          <label>
+            <span>비밀번호</span>
+            <input id="adminPassword" type="password" autocomplete="current-password" />
+          </label>
+          <button class="primary-button full" type="submit">
+            <i data-lucide="log-in"></i>
+            로그인
+          </button>
+        </form>
+
+        <div class="cms-panel" id="cmsPanel" hidden>
+          <div class="admin-user">
+            <span class="avatar" id="adminAvatar">OW</span>
+            <div>
+              <strong id="adminEmailLabel">관리자</strong>
+              <p>인증됨</p>
+            </div>
+            <button class="ghost-button small" id="logoutButton" type="button">로그아웃</button>
+          </div>
+
+          <form class="project-form" id="projectForm">
+            <input type="hidden" id="projectId" />
+            <div class="form-row">
+              <label>
+                <span>제목</span>
+                <input id="projectTitle" type="text" required />
+              </label>
+              <label>
+                <span>카테고리</span>
+                <select id="projectCategory">
+                  <option>챗봇</option>
+                  <option>자동화</option>
+                  <option>문서</option>
+                  <option>데이터</option>
+                  <option>프롬프트</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              <span>한 줄 설명</span>
+              <textarea id="projectDescription" required></textarea>
+            </label>
+            <div class="form-row">
+              <label>
+                <span>테스트 링크</span>
+                <input id="projectLink" type="url" required />
+              </label>
+              <label>
+                <span>공개 상태</span>
+                <select id="projectStatus">
+                  <option>공개</option>
+                  <option>비공개</option>
+                  <option>검토중</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="secondary-button" id="resetFormButton" type="button">
+                <i data-lucide="plus"></i>
+                새 결과물
+              </button>
+              <button class="primary-button" type="submit">
+                <i data-lucide="save"></i>
+                저장
+              </button>
+            </div>
+          </form>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>제목</th>
+                  <th>상태</th>
+                  <th>관리</th>
+                </tr>
+              </thead>
+              <tbody id="adminTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <dialog class="project-dialog" id="projectDialog">
+      <button class="icon-button dialog-close" id="closeDialogButton" type="button" aria-label="닫기">
+        <i data-lucide="x"></i>
+      </button>
+      <div id="dialogContent"></div>
+    </dialog>
+  </body>
+</html>
