@@ -292,7 +292,7 @@ function resetForm() {
   els.projectTitle.value = "";
   els.projectCategory.value = "챗봇";
   els.projectDescription.value = "";
-  els.projectLink.value = "https://example.com/";
+  els.projectLink.value = "";
   els.projectStatus.value = "공개";
   els.projectTitle.focus();
 }
