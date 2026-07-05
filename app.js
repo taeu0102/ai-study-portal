@@ -1,6 +1,6 @@
 const { SUPABASE_ANON_KEY, SUPABASE_URL } = window.AI_STUDY_CONFIG || {};
 
-const DEMO_PROJECTS = [
+const LOCAL_PROJECTS = [
   {
     id: "steal-bomb-game",
     title: "스틸 & 밤",
@@ -11,6 +11,17 @@ const DEMO_PROJECTS = [
     updated_at: "2026-07-04",
     tests: 0,
     icon: "bomb",
+  },
+  {
+    id: "etf-board",
+    title: "ETF Board",
+    category: "투자",
+    description: "축구 포메이션으로 예금, ETF, 주도주를 배치하며 시장 흐름을 공부하는 투자 학습 보드입니다.",
+    link: "https://taeu0102.github.io/ai-study-portal/etf-board/",
+    status: "공개",
+    updated_at: "2026-07-05",
+    tests: 0,
+    icon: "chart-no-axes-combined",
   },
 ];
 
@@ -65,7 +76,7 @@ const els = {
 
 async function init() {
   if (!isConfigured) {
-    state.projects = DEMO_PROJECTS;
+    state.projects = LOCAL_PROJECTS;
     state.loading = false;
     setAuthMessage("config.js에 Supabase URL과 anon key를 넣으면 운영 인증이 활성화됩니다.", "warning");
     render();
@@ -103,7 +114,7 @@ async function loadProjects() {
   renderProjects();
 
   if (!supabaseClient) {
-    state.projects = DEMO_PROJECTS;
+    state.projects = LOCAL_PROJECTS;
     state.loading = false;
     render();
     return;
@@ -117,14 +128,28 @@ async function loadProjects() {
   const { data, error } = state.isAdmin ? await query : await query.eq("status", "공개");
 
   if (error) {
-    state.projects = [];
+    state.projects = LOCAL_PROJECTS;
     setAuthMessage(`데이터를 불러오지 못했습니다: ${error.message}`, "danger");
   } else {
-    state.projects = data || [];
+    state.projects = mergeLocalProjects(data || []);
   }
 
   state.loading = false;
   render();
+}
+
+function mergeLocalProjects(projects) {
+  const merged = [...projects];
+  LOCAL_PROJECTS.forEach((localProject) => {
+    const exists = merged.some(
+      (project) =>
+        project.id === localProject.id ||
+        project.link === localProject.link ||
+        project.title === localProject.title,
+    );
+    if (!exists) merged.push(localProject);
+  });
+  return merged;
 }
 
 function getFilteredProjects() {
@@ -402,6 +427,8 @@ function guardAdmin() {
 function iconForCategory(category) {
   return {
     챗봇: "messages-square",
+    게임: "gamepad-2",
+    투자: "chart-no-axes-combined",
     자동화: "workflow",
     문서: "file-text",
     데이터: "chart-no-axes-combined",

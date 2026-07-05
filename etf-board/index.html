@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ETF Board</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">FB</div>
+          <div>
+            <h1>ETF Board</h1>
+            <p>축구 포메이션으로 시장 흐름 읽기</p>
+          </div>
+        </div>
+
+        <div class="market-strip" aria-label="시장 요약">
+          <div>
+            <span class="strip-label">시장 온도</span>
+            <strong id="marketMood">중립 상승</strong>
+          </div>
+          <div>
+            <span class="strip-label">중앙 라인</span>
+            <strong id="midfieldSignal">ETF 확산</strong>
+          </div>
+          <div>
+            <span class="strip-label">공격 라인</span>
+            <strong id="attackSignal">AI 주도</strong>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-button" id="refreshReport" type="button" title="리포트 갱신" aria-label="리포트 갱신">
+            <span aria-hidden="true">↻</span>
+          </button>
+          <button class="primary-button" id="downloadReport" type="button">리포트 저장</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <aside class="left-rail" aria-label="시장 탐색">
+          <section class="rail-section">
+            <div class="section-title">
+              <span>라인 규칙</span>
+              <small>배치 제한</small>
+            </div>
+            <div class="rule-list">
+              <button class="rule-chip is-active" data-line-filter="all" type="button">
+                <strong>전체</strong>
+                <span>스쿼드</span>
+              </button>
+              <button class="rule-chip" data-line-filter="defense" type="button">
+                <strong>수비</strong>
+                <span>예금 · 채권 · 현금성</span>
+              </button>
+              <button class="rule-chip" data-line-filter="midfield" type="button">
+                <strong>미드</strong>
+                <span>ETF · 섹터 바스켓</span>
+              </button>
+              <button class="rule-chip" data-line-filter="attack" type="button">
+                <strong>공격</strong>
+                <span>상위 10 주도주</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="rail-section">
+            <div class="section-title">
+              <span>스쿼드 뉴스</span>
+              <small id="newsCount">0건</small>
+            </div>
+            <div class="news-list" id="newsList"></div>
+          </section>
+
+          <section class="rail-section">
+            <div class="section-title">
+              <span>시장 급등 TOP 5</span>
+              <button class="mini-button" id="rotateMovers" type="button">전환</button>
+            </div>
+            <div class="mover-list" id="moverList"></div>
+          </section>
+        </aside>
+
+        <section class="field-shell" aria-label="포메이션 보드">
+          <div class="field-toolbar">
+            <div class="segmented formation-tabs" role="group" aria-label="포메이션">
+              <button class="segment is-active" data-formation-key="4-3-3" type="button">4-3-3</button>
+              <button class="segment" data-formation-key="3-5-2" type="button">3-5-2</button>
+              <button class="segment" data-formation-key="4-4-2" type="button">4-4-2</button>
+              <button class="segment" data-formation-key="4-1-2-3" type="button">4-1-2-3</button>
+              <button class="segment" data-formation-key="custom" type="button">커스텀</button>
+            </div>
+            <div class="session-meta">
+              <span>포메이션</span>
+              <strong id="formationName">4-3-3</strong>
+              <span>스쿼드</span>
+              <strong id="squadCount">10/10</strong>
+            </div>
+          </div>
+
+          <div class="custom-panel" id="customPanel" aria-label="커스텀 포메이션 설정">
+            <div class="custom-rule">
+              <strong>커스텀 규칙</strong>
+              <span>공격 1-4 · 미드/수비 1-5 · 총 10개 필수</span>
+            </div>
+            <div class="line-steppers">
+              <div class="line-stepper">
+                <span>공격</span>
+                <button type="button" data-custom-adjust="attack:-1" aria-label="공격수 줄이기">−</button>
+                <strong data-custom-value="attack">3</strong>
+                <button type="button" data-custom-adjust="attack:1" aria-label="공격수 늘리기">+</button>
+              </div>
+              <div class="line-stepper">
+                <span>미드</span>
+                <button type="button" data-custom-adjust="midfield:-1" aria-label="미드필더 줄이기">−</button>
+                <strong data-custom-value="midfield">3</strong>
+                <button type="button" data-custom-adjust="midfield:1" aria-label="미드필더 늘리기">+</button>
+              </div>
+              <div class="line-stepper">
+                <span>수비</span>
+                <button type="button" data-custom-adjust="defense:-1" aria-label="수비수 줄이기">−</button>
+                <strong data-custom-value="defense">4</strong>
+                <button type="button" data-custom-adjust="defense:1" aria-label="수비수 늘리기">+</button>
+              </div>
+            </div>
+            <div class="custom-actions">
+              <span id="customRuleStatus">총 10/10</span>
+              <button class="mini-button" id="applyCustomFormation" type="button">적용</button>
+            </div>
+          </div>
+
+          <div class="pitch" id="pitch" aria-label="축구장형 자산 배치판">
+            <div class="pitch-line halfway"></div>
+            <div class="pitch-line box-top"></div>
+            <div class="pitch-line box-bottom"></div>
+            <div class="pitch-circle"></div>
+            <div class="pitch-label attack">공격</div>
+            <div class="pitch-label midfield">미드</div>
+            <div class="pitch-label defense">수비</div>
+          </div>
+
+          <div class="bench-strip">
+            <div>
+              <span class="bench-label">벤치</span>
+              <strong id="benchHint">라인 규칙에 맞는 카드만 투입</strong>
+            </div>
+            <div class="bench-list" id="benchList" aria-label="벤치 종목"></div>
+          </div>
+        </section>
+
+        <aside class="right-rail" aria-label="상세 정보">
+          <section class="detail-panel" id="assetDetail"></section>
+          <section class="report-panel" id="reportPanel"></section>
+        </aside>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
