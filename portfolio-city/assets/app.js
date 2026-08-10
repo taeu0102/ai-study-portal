@@ -335,6 +335,150 @@ function statusForReturn(value) {
   return { label: "정상 가동", className: "warn" };
 }
 
+function renderBuildingArt(visual, ticker = "") {
+  const label = escapeHtml(ticker);
+  const common = 'class="building-art" viewBox="0 0 180 150" aria-hidden="true" focusable="false"';
+
+  if (visual === "cityhall") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M19 118 L90 84 L161 118 L90 146 Z" />
+        <path class="road" d="M78 134 L90 112 L102 134 L90 146 Z" />
+        <rect class="hall-base" x="46" y="64" width="88" height="52" rx="8" />
+        <rect class="hall-wing" x="31" y="78" width="32" height="34" rx="6" />
+        <rect class="hall-wing" x="117" y="78" width="32" height="34" rx="6" />
+        <path class="hall-roof" d="M37 66 L90 34 L143 66 Z" />
+        <rect class="hall-tower" x="76" y="38" width="28" height="78" rx="6" />
+        <circle class="clock" cx="90" cy="58" r="8" />
+        <path class="flag-pole" d="M104 37 V17" />
+        <path class="flag" d="M106 18 H132 L126 30 H106 Z" />
+        <path class="pillars" d="M57 79 V111 M75 75 V111 M90 73 V111 M105 75 V111 M123 79 V111" />
+      </svg>
+    `;
+  }
+
+  if (visual === "chip") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M18 119 L91 84 L162 119 L90 146 Z" />
+        <rect class="factory" x="36" y="57" width="108" height="60" rx="12" />
+        <rect class="chip-core" x="55" y="67" width="70" height="39" rx="5" />
+        <path class="chip-lines" d="M46 72 H28 M46 85 H25 M46 99 H28 M134 72 H152 M134 85 H155 M134 99 H152 M61 58 V42 M76 58 V38 M91 58 V42 M106 58 V38 M121 58 V42" />
+        <path class="circuit" d="M64 80 H84 V73 H106 M64 94 H93 V101 H115" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "hbm") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M20 119 L91 84 L160 119 L90 146 Z" />
+        <rect class="memory memory-back" x="42" y="42" width="36" height="82" rx="7" />
+        <rect class="memory memory-mid" x="72" y="32" width="36" height="92" rx="7" />
+        <rect class="memory memory-front" x="103" y="49" width="34" height="75" rx="7" />
+        <path class="stack-lines" d="M48 58 H72 M48 74 H72 M48 90 H72 M48 106 H72 M78 49 H102 M78 65 H102 M78 81 H102 M78 97 H102 M109 64 H131 M109 80 H131 M109 96 H131" />
+        <path class="pins" d="M38 126 H142 M49 130 V138 M67 130 V138 M85 130 V138 M103 130 V138 M121 130 V138" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "manufacturing") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M19 120 L90 84 L161 120 L91 146 Z" />
+        <path class="factory-roof" d="M35 75 H55 L55 55 L78 75 H91 L91 55 L114 75 H145 V119 H35 Z" />
+        <rect class="factory-front" x="42" y="82" width="96" height="39" rx="8" />
+        <path class="windows" d="M54 94 H75 M86 94 H107 M118 94 H130" />
+        <path class="conveyor" d="M47 124 H136" />
+        <circle class="wheel" cx="64" cy="124" r="5" />
+        <circle class="wheel" cx="119" cy="124" r="5" />
+        <path class="arm" d="M124 70 L145 54 L153 62 L136 82" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "heavy") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M18 120 L90 84 L162 120 L91 146 Z" />
+        <rect class="steel-base" x="43" y="77" width="86" height="45" rx="8" />
+        <path class="furnace" d="M65 41 H101 L112 122 H54 Z" />
+        <rect class="chimney" x="115" y="36" width="22" height="84" rx="8" />
+        <rect class="chimney thin" x="42" y="54" width="16" height="65" rx="7" />
+        <path class="smoke" d="M124 29 C117 21 127 14 137 20 M48 47 C40 40 48 31 58 37" />
+        <path class="molten" d="M71 96 C82 91 94 100 105 94 V119 H71 Z" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "shipyard") {
+    return `
+      <svg ${common}>
+        <path class="water-ground" d="M18 120 L90 84 L162 120 L91 146 Z" />
+        <path class="dock" d="M36 105 H144 L133 132 H49 Z" />
+        <path class="ship" d="M48 94 H129 L113 121 H62 Z" />
+        <path class="ship-deck" d="M68 79 H105 L116 94 H56 Z" />
+        <path class="crane" d="M42 34 V104 M42 38 H126 M102 38 V82" />
+        <path class="hook" d="M102 82 V94 C102 101 112 101 112 94" />
+        <path class="waves" d="M35 135 C47 128 59 142 71 135 C83 128 95 142 107 135 C119 128 131 142 143 135" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "energy") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M19 120 L90 84 L161 120 L91 146 Z" />
+        <path class="cooling" d="M103 44 H139 C132 72 132 96 143 124 H99 C111 96 111 72 103 44 Z" />
+        <rect class="plant" x="42" y="75" width="64" height="48" rx="9" />
+        <path class="solar" d="M29 97 L77 82 L97 96 L50 114 Z M43 101 L87 88 M56 94 L77 108" />
+        <path class="bolt" d="M82 42 L65 76 H80 L69 104 L100 63 H84 Z" />
+        <path class="steam" d="M119 36 C110 27 120 18 132 25 M136 35 C127 27 139 17 148 25" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  if (visual === "complex") {
+    return `
+      <svg ${common}>
+        <path class="ground" d="M18 120 L90 84 L162 120 L91 146 Z" />
+        <rect class="complex-tower a" x="37" y="66" width="38" height="57" rx="8" />
+        <rect class="complex-tower b" x="72" y="43" width="42" height="80" rx="8" />
+        <rect class="complex-tower c" x="111" y="73" width="31" height="50" rx="7" />
+        <path class="complex-lines" d="M47 78 H66 M47 91 H66 M47 104 H66 M82 58 H104 M82 72 H104 M82 86 H104 M82 100 H104 M119 86 H136 M119 99 H136" />
+        <path class="connector" d="M56 127 H130 M77 119 L92 108 L112 119" />
+        <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+        <text x="90" y="124" text-anchor="middle">${label}</text>
+      </svg>
+    `;
+  }
+
+  return `
+    <svg ${common}>
+      <path class="ground" d="M18 120 L90 84 L162 120 L91 146 Z" />
+      <rect class="market-block a" x="43" y="75" width="32" height="50" rx="8" />
+      <rect class="market-block b" x="78" y="48" width="36" height="77" rx="8" />
+      <rect class="market-block c" x="118" y="65" width="26" height="60" rx="8" />
+      <path class="market-windows" d="M52 87 H66 M52 101 H66 M87 62 H105 M87 76 H105 M87 90 H105 M87 104 H105 M125 78 H137 M125 92 H137 M125 106 H137" />
+      <path class="plaza" d="M49 132 H133 M64 132 C71 119 109 119 116 132" />
+      <rect class="label-plate" x="64" y="110" width="52" height="20" rx="5" />
+      <text x="90" y="124" text-anchor="middle">${label}</text>
+    </svg>
+  `;
+}
+
 function render() {
   const scenario = getScenario();
   const allocated = getAllocatedTotal();
@@ -413,11 +557,9 @@ function renderCity() {
   const cityHall = `
     <button class="lot is-base ${state.selectedAssetId === "cash" ? "is-selected" : ""}" type="button" data-select-asset="cash">
       <span class="tile-ground"></span>
-      <div class="building city-hall visual-cityhall">
+      <div class="building illustration city-hall visual-cityhall">
         <span class="sprite-shadow"></span>
-        <div class="building-body"></div>
-        <span class="sprite-roof"></span>
-        <span class="sprite-addon"></span>
+        ${renderBuildingArt("cityhall")}
         <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i>시청</span>
       </div>
     </button>
@@ -440,12 +582,9 @@ function renderCity() {
       return `
         <button class="lot ${slotClass} ${asset.id === state.selectedAssetId ? "is-selected" : ""}" type="button" data-select-asset="${asset.id}">
           <span class="tile-ground"></span>
-          <div class="building tier-${tier} sector-${asset.sector} visual-${asset.visual}">
+          <div class="building illustration tier-${tier} sector-${asset.sector} visual-${asset.visual}">
             <span class="sprite-shadow"></span>
-            <div class="building-body"></div>
-            <span class="sprite-roof"></span>
-            <span class="sprite-addon"></span>
-            <span class="sprite-sign">${escapeHtml(asset.ticker)}</span>
+            ${renderBuildingArt(asset.visual, asset.ticker)}
             <span class="building-chip"><i data-lucide="${asset.icon}" aria-hidden="true"></i>${escapeHtml(asset.building)}</span>
           </div>
         </button>

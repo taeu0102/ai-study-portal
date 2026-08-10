@@ -2156,3 +2156,571 @@ h3,
     grid-auto-rows: 156px;
   }
 }
+
+/* Illustration game skin */
+:root {
+  --bg: #edf2e7;
+  --surface: #fffdf4;
+  --surface-soft: #f2f6e8;
+  --line: #c7d6c3;
+  --line-strong: #7f937e;
+  --text: #1e2a22;
+  --muted: #657263;
+  --green: #2f8f46;
+  --green-soft: #def2d3;
+  --teal: #2c8d96;
+  --blue: #4c7fc5;
+  --amber: #d49438;
+  --red: #c65343;
+  --panel-shadow: rgba(28, 51, 35, 0.18);
+  --pixel-shadow: 0 18px 40px rgba(32, 60, 42, 0.16);
+  --radius: 8px;
+}
+
+body {
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.8), rgba(226, 236, 222, 0.76)),
+    radial-gradient(circle at 18% 18%, rgba(78, 152, 86, 0.2), transparent 30%),
+    radial-gradient(circle at 82% 10%, rgba(76, 127, 197, 0.16), transparent 28%),
+    #edf2e7;
+}
+
+.topbar {
+  border-bottom: 1px solid rgba(127, 147, 126, 0.42);
+  background: rgba(255, 253, 244, 0.94);
+  box-shadow: 0 10px 28px rgba(34, 55, 38, 0.1);
+}
+
+.brand-mark {
+  border: 0;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, #3c8c55, #2c6b87);
+  box-shadow: 0 10px 22px rgba(44, 107, 135, 0.22);
+}
+
+.brand strong {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.market-pill {
+  border: 1px solid rgba(127, 147, 126, 0.5);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #fffdf4, #edf7e6);
+  box-shadow: 0 12px 25px rgba(34, 55, 38, 0.12);
+}
+
+.market-pill strong {
+  border: 0;
+  border-radius: 6px;
+  background: #dff2ce;
+  color: #1f6f36;
+}
+
+.icon-button,
+.primary-button,
+.mini-button,
+.scenario-tab {
+  border: 1px solid rgba(127, 147, 126, 0.58);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(34, 55, 38, 0.1);
+}
+
+.primary-button {
+  background:
+    linear-gradient(135deg, #48a75d, #2a7b42);
+  text-shadow: none;
+}
+
+.icon-button:hover,
+.primary-button:hover,
+.mini-button:hover,
+.scenario-tab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 13px 24px rgba(34, 55, 38, 0.16);
+}
+
+.side-panel,
+.city-stage {
+  border: 1px solid rgba(127, 147, 126, 0.48);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 244, 0.96), rgba(244, 249, 236, 0.94));
+  box-shadow: 0 18px 42px rgba(32, 60, 42, 0.13);
+}
+
+.capital-summary {
+  border-bottom: 1px solid rgba(127, 147, 126, 0.35);
+  background:
+    linear-gradient(135deg, rgba(222, 242, 211, 0.74), rgba(255, 253, 244, 0.6));
+  border-radius: 8px;
+}
+
+.stat-grid div,
+.status-card,
+.asset-card,
+.sector-card,
+.flow-item,
+.report-item {
+  border: 1px solid rgba(127, 147, 126, 0.42);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, #fffdf4, #f2f6e8);
+  box-shadow: 0 10px 24px rgba(32, 60, 42, 0.09);
+}
+
+#operatingFunds {
+  border: 1px solid rgba(127, 147, 126, 0.42);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #fff7d9, #fffdf4);
+  box-shadow: 0 12px 24px rgba(151, 111, 45, 0.15);
+}
+
+.asset-card.is-selected {
+  border-color: #48a75d;
+  background:
+    linear-gradient(180deg, #fbfff4, #e3f5d7);
+  box-shadow:
+    0 0 0 4px rgba(72, 167, 93, 0.16),
+    0 12px 24px rgba(32, 60, 42, 0.12);
+}
+
+.asset-icon,
+.detail-icon,
+.report-item i {
+  border: 0;
+  border-radius: 8px;
+  background: #def2d3;
+  box-shadow: none;
+}
+
+.scenario-tab {
+  background: #fffdf4;
+}
+
+.scenario-tab.is-active {
+  border-color: rgba(190, 128, 33, 0.5);
+  background:
+    linear-gradient(135deg, #ffe39a, #d49438);
+  color: #352414;
+}
+
+.game-hud {
+  border-top: 1px solid rgba(127, 147, 126, 0.36);
+  border-bottom: 1px solid rgba(127, 147, 126, 0.36);
+  background:
+    linear-gradient(135deg, #e9f4df, #d6e7ce);
+}
+
+.game-hud div {
+  border: 1px solid rgba(127, 147, 126, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 253, 244, 0.92);
+  box-shadow: 0 10px 18px rgba(32, 60, 42, 0.08);
+}
+
+.city-map {
+  grid-template-columns: repeat(3, minmax(158px, 1fr));
+  grid-template-rows: repeat(3, 190px);
+  grid-auto-rows: 190px;
+  gap: 12px;
+  min-height: 690px;
+  padding: 32px;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 18px), rgba(173, 143, 86, 0.38) calc(50% - 18px), rgba(173, 143, 86, 0.38) calc(50% + 18px), transparent calc(50% + 18px)),
+    linear-gradient(0deg, transparent calc(50% - 17px), rgba(173, 143, 86, 0.34) calc(50% - 17px), rgba(173, 143, 86, 0.34) calc(50% + 17px), transparent calc(50% + 17px)),
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.32) 0 2px, transparent 3px) 0 0 / 56px 56px,
+    linear-gradient(180deg, #a7d184, #78b967 52%, #5a9b58);
+}
+
+.city-map::before {
+  inset: 18px;
+  border: 1px solid rgba(47, 93, 55, 0.42);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 24px 60px rgba(255, 255, 255, 0.12),
+    inset 0 -18px 40px rgba(34, 87, 42, 0.16);
+}
+
+.city-map::after {
+  right: -7%;
+  bottom: 7%;
+  width: 38%;
+  height: 62px;
+  border: 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 40%),
+    #70bfd0;
+  transform: rotate(-25deg);
+  box-shadow: inset 0 -8px 0 rgba(46, 124, 146, 0.22);
+}
+
+.lot:hover,
+.lot.is-selected {
+  transform: translateY(-4px);
+}
+
+.tile-ground {
+  bottom: 14px;
+  width: 150px;
+  height: 86px;
+  transform: translateX(-50%) skewX(-18deg) rotate(-7deg);
+  border: 0;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.36), transparent 48%),
+    #97c975;
+  box-shadow:
+    0 16px 28px rgba(36, 70, 42, 0.18),
+    inset 0 -10px 0 rgba(57, 106, 58, 0.16);
+}
+
+.lot.is-base .tile-ground {
+  width: 208px;
+  height: 116px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 50%),
+    #d2b567;
+  box-shadow:
+    0 20px 32px rgba(92, 69, 30, 0.18),
+    inset 0 -12px 0 rgba(116, 82, 32, 0.16);
+}
+
+.building.illustration {
+  display: block;
+  width: 180px;
+  height: 150px;
+  margin-bottom: 20px;
+  image-rendering: auto;
+}
+
+.building.illustration.tier-1 {
+  transform: scale(0.9);
+}
+
+.building.illustration.tier-2 {
+  transform: scale(0.98);
+}
+
+.building.illustration.tier-3 {
+  transform: scale(1.06);
+}
+
+.lot:hover .building.illustration,
+.lot.is-selected .building.illustration {
+  filter: drop-shadow(0 12px 16px rgba(31, 82, 43, 0.24));
+}
+
+.building.illustration .sprite-shadow,
+.building.illustration .building-body,
+.building.illustration .sprite-roof,
+.building.illustration .sprite-addon,
+.building.illustration .sprite-sign {
+  display: none;
+}
+
+.building-art {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 180px;
+  height: 150px;
+  overflow: visible;
+  transform: translateX(-50%);
+}
+
+.building-art * {
+  vector-effect: non-scaling-stroke;
+}
+
+.building-art path,
+.building-art rect,
+.building-art circle {
+  stroke: #24422b;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.building-art text {
+  fill: #223027;
+  font-family: Inter, "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.building-art .ground {
+  fill: #a8d384;
+  stroke: rgba(36, 66, 43, 0.42);
+}
+
+.building-art .water-ground {
+  fill: #86c9d7;
+  stroke: rgba(36, 66, 43, 0.42);
+}
+
+.building-art .label-plate {
+  fill: rgba(255, 253, 244, 0.9);
+  stroke: rgba(36, 66, 43, 0.55);
+  stroke-width: 1.5;
+}
+
+.building-art .road {
+  fill: rgba(151, 115, 58, 0.38);
+  stroke: none;
+}
+
+.building-art .hall-base,
+.building-art .hall-wing,
+.building-art .hall-tower {
+  fill: #c59649;
+}
+
+.building-art .hall-roof {
+  fill: #795734;
+}
+
+.building-art .clock {
+  fill: #fff7d9;
+}
+
+.building-art .flag-pole,
+.building-art .pillars {
+  fill: none;
+  stroke: #fff3c9;
+  stroke-width: 5;
+}
+
+.building-art .flag {
+  fill: #e25b4a;
+}
+
+.building-art .factory,
+.building-art .chip-core {
+  fill: #3aa98d;
+}
+
+.building-art .chip-core {
+  fill: #cffff2;
+}
+
+.building-art .chip-lines,
+.building-art .circuit,
+.building-art .stack-lines,
+.building-art .pins,
+.building-art .windows,
+.building-art .complex-lines,
+.building-art .market-windows {
+  fill: none;
+  stroke: #24422b;
+  stroke-width: 3;
+}
+
+.building-art .memory {
+  fill: #52b8a5;
+}
+
+.building-art .memory-back {
+  opacity: 0.72;
+}
+
+.building-art .memory-mid {
+  fill: #2c8d96;
+}
+
+.building-art .memory-front {
+  fill: #9ed9cf;
+}
+
+.building-art .factory-roof,
+.building-art .factory-front {
+  fill: #5b8bd4;
+}
+
+.building-art .factory-front {
+  fill: #7fa7df;
+}
+
+.building-art .conveyor,
+.building-art .arm {
+  fill: none;
+  stroke: #8b5b2f;
+  stroke-width: 5;
+}
+
+.building-art .wheel {
+  fill: #334155;
+}
+
+.building-art .steel-base,
+.building-art .furnace,
+.building-art .chimney {
+  fill: #8a5b43;
+}
+
+.building-art .furnace {
+  fill: #9f6750;
+}
+
+.building-art .chimney.thin {
+  fill: #6f4738;
+}
+
+.building-art .smoke {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.86);
+  stroke-width: 7;
+}
+
+.building-art .molten {
+  fill: #ffad3d;
+  stroke: #b75a23;
+}
+
+.building-art .dock {
+  fill: #7f5d3f;
+}
+
+.building-art .ship {
+  fill: #f7f4e8;
+}
+
+.building-art .ship-deck {
+  fill: #3d85b8;
+}
+
+.building-art .crane,
+.building-art .hook {
+  fill: none;
+  stroke: #d49438;
+  stroke-width: 6;
+}
+
+.building-art .waves {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 4;
+}
+
+.building-art .cooling {
+  fill: #d9ded1;
+}
+
+.building-art .plant {
+  fill: #d49438;
+}
+
+.building-art .solar {
+  fill: #5b8bd4;
+}
+
+.building-art .bolt {
+  fill: #ffd84d;
+}
+
+.building-art .steam {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.86);
+  stroke-width: 7;
+}
+
+.building-art .complex-tower.a,
+.building-art .market-block.a {
+  fill: #48a75d;
+}
+
+.building-art .complex-tower.b,
+.building-art .market-block.b {
+  fill: #2c8d96;
+}
+
+.building-art .complex-tower.c,
+.building-art .market-block.c {
+  fill: #5b8bd4;
+}
+
+.building-art .connector,
+.building-art .plaza {
+  fill: none;
+  stroke: #496b56;
+  stroke-width: 4;
+}
+
+.building-chip {
+  bottom: -12px;
+  z-index: 5;
+  max-width: 146px;
+  border: 1px solid rgba(62, 83, 66, 0.36);
+  border-radius: 8px;
+  background: rgba(255, 253, 244, 0.94);
+  box-shadow: 0 8px 18px rgba(32, 60, 42, 0.14);
+  font-size: 11px;
+}
+
+.map-deco {
+  opacity: 0.78;
+  filter: drop-shadow(0 7px 8px rgba(32, 60, 42, 0.18));
+}
+
+.deco-tree {
+  border-radius: 999px 999px 8px 8px;
+  background:
+    radial-gradient(circle at 50% 24%, #4aa45b 0 15px, transparent 16px),
+    linear-gradient(90deg, transparent 9px, #8b5b2f 9px 15px, transparent 15px);
+  box-shadow: none;
+}
+
+.deco-crane {
+  border-left: 3px solid #9b672e;
+  border-bottom: 3px solid #9b672e;
+}
+
+.deco-crane::before {
+  height: 4px;
+  background: #d49438;
+  box-shadow: 22px 12px 0 -2px #d49438;
+}
+
+.deco-water {
+  border: 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 55%),
+    #70bfd0;
+}
+
+.sector-manufacturing {
+  --building-color: #5b8bd4;
+}
+
+.sector-heavy {
+  --building-color: #9f6750;
+}
+
+.sector-shipbuilding {
+  --building-color: #3d85b8;
+}
+
+@media (max-width: 860px) {
+  .city-map {
+    grid-template-columns: repeat(2, minmax(132px, 1fr));
+    grid-auto-rows: 178px;
+  }
+}
+
+@media (max-width: 560px) {
+  .city-map {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 178px;
+  }
+
+  .building.illustration {
+    transform: scale(0.94);
+  }
+}
