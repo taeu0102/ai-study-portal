@@ -23,6 +23,17 @@ const LOCAL_PROJECTS = [
     tests: 0,
     icon: "chart-no-axes-combined",
   },
+  {
+    id: "portfolio-city",
+    title: "Portfolio City",
+    category: "투자",
+    description: "투자 금액에 따라 도시 부지에 건물이 생기고, 시장 흐름에 따라 운영 자금이 변하는 투자 시뮬레이터 UX 가안입니다.",
+    link: "https://taeu0102.github.io/ai-study-portal/portfolio-city/",
+    status: "공개",
+    updated_at: "2026-08-10",
+    tests: 0,
+    icon: "building-2",
+  },
 ];
 
 const isConfigured =
