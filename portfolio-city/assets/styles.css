@@ -2640,3 +2640,186 @@ body[data-market-session="sunset"] .building.illustration {
     height: 178px;
   }
 }
+
+/* Filled game composition pass */
+.dashboard {
+  --play-height: calc(100vh - 92px);
+  display: grid;
+  grid-template-columns: minmax(640px, 1fr) minmax(392px, 448px);
+  grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  width: min(1480px, 100%);
+  height: var(--play-height);
+  min-height: var(--play-height);
+  margin: 0 auto;
+  align-items: stretch;
+  overflow: hidden;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.dashboard > * {
+  min-height: 0;
+}
+
+.city-stage {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  position: sticky;
+  top: 80px;
+  width: 100%;
+  height: var(--play-height);
+  min-height: 610px;
+  max-height: none;
+  justify-self: stretch;
+}
+
+.city-map {
+  height: 100%;
+  min-height: 100%;
+}
+
+.allocation-panel,
+.insight-panel {
+  grid-column: 2;
+  max-width: none;
+  max-height: none;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden auto;
+}
+
+.allocation-panel {
+  grid-row: 1;
+}
+
+.insight-panel {
+  grid-row: 2;
+}
+
+.stage-header {
+  width: min(392px, calc(100% - 24px));
+  background:
+    linear-gradient(135deg, rgba(255, 253, 244, 0.92), rgba(255, 253, 244, 0.72)),
+    var(--time-soft);
+}
+
+.game-hud {
+  top: 154px;
+}
+
+.sector-strip {
+  max-height: 118px;
+}
+
+.slot-pos-1 {
+  --x: 13%;
+  --y: 28%;
+}
+
+.slot-pos-2 {
+  --x: 34%;
+  --y: 22%;
+}
+
+.slot-pos-3 {
+  --x: 64%;
+  --y: 23%;
+}
+
+.slot-pos-4 {
+  --x: 86%;
+  --y: 34%;
+}
+
+.slot-pos-5 {
+  --x: 21%;
+  --y: 50%;
+}
+
+.slot-pos-6 {
+  --x: 78%;
+  --y: 53%;
+}
+
+.slot-pos-7 {
+  --x: 13%;
+  --y: 74%;
+}
+
+.slot-pos-8 {
+  --x: 36%;
+  --y: 80%;
+}
+
+.slot-pos-9 {
+  --x: 64%;
+  --y: 76%;
+}
+
+.slot-pos-10 {
+  --x: 87%;
+  --y: 76%;
+}
+
+.deco-cloud-1 {
+  left: 56%;
+  top: 13%;
+}
+
+.deco-cloud-2 {
+  right: 8%;
+  top: 45%;
+}
+
+.deco-hill-1 {
+  left: 6%;
+  top: 42%;
+}
+
+.deco-hill-2 {
+  right: 7%;
+  top: 17%;
+}
+
+.deco-farm {
+  left: 43%;
+  top: 37%;
+}
+
+.asset-list {
+  padding-bottom: 2px;
+}
+
+@media (max-width: 1180px) {
+  .dashboard {
+    --play-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+
+  .city-stage,
+  .allocation-panel,
+  .insight-panel {
+    grid-column: 1;
+    grid-row: auto;
+    height: auto;
+  }
+
+  .city-stage {
+    position: relative;
+    top: auto;
+    min-height: 650px;
+  }
+
+  .allocation-panel,
+  .insight-panel {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 620px) {
+  .city-stage {
+    min-height: auto;
+  }
+}
