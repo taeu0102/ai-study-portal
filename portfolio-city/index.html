@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio City</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/styles.css?v=20260810-slg" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
@@ -94,6 +94,21 @@
             <div class="scenario-tabs" id="scenarioTabs" aria-label="시장 시나리오"></div>
           </div>
 
+          <div class="game-hud" aria-label="도시 플레이 상태">
+            <div>
+              <span>턴</span>
+              <strong id="turnNumber">DAY 01</strong>
+            </div>
+            <div>
+              <span>도시 등급</span>
+              <strong id="cityGrade">B</strong>
+            </div>
+            <div>
+              <span>가동 건물</span>
+              <strong id="buildingCount">8동</strong>
+            </div>
+          </div>
+
           <div class="city-map" id="cityMap" aria-label="투자 도시 부지"></div>
 
           <div class="sector-strip" id="sectorStrip" aria-label="섹터 영향도"></div>
@@ -122,6 +137,6 @@
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="./assets/app.js"></script>
+    <script src="./assets/app.js?v=20260810-slg"></script>
   </body>
 </html>

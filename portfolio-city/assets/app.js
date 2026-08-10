@@ -232,6 +232,9 @@ const els = {
   allocationHint: document.querySelector("#allocationHint"),
   assetList: document.querySelector("#assetList"),
   operatingFunds: document.querySelector("#operatingFunds"),
+  turnNumber: document.querySelector("#turnNumber"),
+  cityGrade: document.querySelector("#cityGrade"),
+  buildingCount: document.querySelector("#buildingCount"),
   scenarioTabs: document.querySelector("#scenarioTabs"),
   cityMap: document.querySelector("#cityMap"),
   sectorStrip: document.querySelector("#sectorStrip"),
@@ -272,6 +275,15 @@ function getDailyPnl() {
   const assetPnl = assets.reduce((sum, asset) => sum + asset.amount * (getReturn(asset) / 100), 0);
   const idleCash = Math.max(SEED_MONEY - getAllocatedTotal(), 0);
   return assetPnl + idleCash * (getScenario().sectors.stable / 100);
+}
+
+function getCityGrade(operating) {
+  const activeLots = assets.filter((asset) => asset.amount > 0).length;
+  const maxWeight = Math.max(...assets.map((asset) => asset.amount)) / SEED_MONEY;
+  if (operating >= 10300 && activeLots >= 8 && maxWeight < 0.24) return "A";
+  if (operating >= 10000 && activeLots >= 7) return "B";
+  if (operating >= 9700) return "C";
+  return "D";
 }
 
 function getSelectedAsset() {
@@ -333,6 +345,9 @@ function render() {
   els.dailyPnl.textContent = `${pnl >= 0 ? "+" : ""}${money(pnl)}`;
   els.dailyPnl.className = impactClass(pnl);
   els.operatingFunds.textContent = money(operating);
+  els.turnNumber.textContent = `DAY ${String(state.day + 1).padStart(2, "0")}`;
+  els.cityGrade.textContent = `${getCityGrade(operating)} RANK`;
+  els.buildingCount.textContent = `${assets.filter((asset) => asset.amount > 0).length}동`;
   els.investedRate.textContent = `${Math.round(investedRate * 100)}%`;
   els.capitalArc.style.strokeDashoffset = String(301 * (1 - investedRate));
   els.allocationHint.textContent = `${money(SEED_MONEY)} 기준`;
@@ -388,8 +403,11 @@ function renderAssets() {
 function renderCity() {
   const cityHall = `
     <button class="lot is-base ${state.selectedAssetId === "cash" ? "is-selected" : ""}" type="button" data-select-asset="cash">
+      <span class="tile-ground"></span>
       <div class="building city-hall">
+        <span class="sprite-shadow"></span>
         <div class="building-body"></div>
+        <span class="sprite-roof"></span>
         <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i>시청</span>
       </div>
     </button>
@@ -401,6 +419,7 @@ function renderCity() {
       if (asset.amount <= 0) {
         return `
           <button class="lot is-empty" type="button" data-select-asset="${asset.id}">
+            <span class="tile-ground"></span>
             <span class="empty-lot"><i aria-hidden="true"></i>${escapeHtml(sectorLabels[asset.sector])} 부지</span>
           </button>
         `;
@@ -409,8 +428,12 @@ function renderCity() {
       const tier = tierForAmount(asset.amount);
       return `
         <button class="lot ${asset.id === state.selectedAssetId ? "is-selected" : ""}" type="button" data-select-asset="${asset.id}">
+          <span class="tile-ground"></span>
           <div class="building tier-${tier} sector-${asset.sector}">
+            <span class="sprite-shadow"></span>
             <div class="building-body"></div>
+            <span class="sprite-roof"></span>
+            <span class="sprite-sign">${escapeHtml(asset.ticker)}</span>
             <span class="building-chip"><i data-lucide="${asset.icon}" aria-hidden="true"></i>${escapeHtml(asset.building)}</span>
           </div>
         </button>
@@ -418,7 +441,14 @@ function renderCity() {
     })
     .join("");
 
-  els.cityMap.innerHTML = cityHall + lots;
+  const mapDecorations = `
+    <span class="map-deco deco-tree deco-tree-1" aria-hidden="true"></span>
+    <span class="map-deco deco-tree deco-tree-2" aria-hidden="true"></span>
+    <span class="map-deco deco-crane" aria-hidden="true"></span>
+    <span class="map-deco deco-water" aria-hidden="true"></span>
+  `;
+
+  els.cityMap.innerHTML = cityHall + lots + mapDecorations;
 }
 
 function renderSectorStrip() {
