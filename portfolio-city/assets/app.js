@@ -4,13 +4,13 @@ const STEP = 100;
 const scenarios = [
   {
     name: "반도체 강세장",
-    note: "AI 서버 투자 확대로 반도체와 관련 ETF가 도시 생산성을 끌어올립니다.",
+    note: "AI 서버 투자 확대로 반도체 팹과 반도체 ETF 단지가 도시 생산성을 끌어올립니다.",
     sectors: {
       semiconductor: 2.8,
-      auto: -0.6,
+      manufacturing: -0.6,
+      heavy: 0.4,
+      shipbuilding: -0.3,
       energy: 1.1,
-      platform: -1.2,
-      bio: 0.4,
       etf: 1.3,
       stable: 0.1,
     },
@@ -20,36 +20,36 @@ const scenarios = [
     note: "성장 섹터의 밸류에이션 부담이 커지고 현금성 자산의 완충력이 커집니다.",
     sectors: {
       semiconductor: -1.4,
-      auto: 0.8,
+      manufacturing: 0.8,
+      heavy: 0.3,
+      shipbuilding: 0.6,
       energy: -0.2,
-      platform: -2.2,
-      bio: -0.9,
       etf: -0.6,
       stable: 0.2,
     },
   },
   {
-    name: "에너지 순환매",
-    note: "유가와 전력망 이슈로 에너지 구역이 확장되고 일부 성장주는 쉬어갑니다.",
+    name: "조선 수주 랠리",
+    note: "LNG선과 해양 플랜트 수주 기대가 조선소와 중공업 지구의 가동률을 높입니다.",
     sectors: {
       semiconductor: 0.5,
-      auto: 1.7,
-      energy: 3.1,
-      platform: -0.4,
-      bio: 0.2,
+      manufacturing: 1.2,
+      heavy: 2.1,
+      shipbuilding: 3.3,
+      energy: 1.4,
       etf: 0.9,
       stable: 0.1,
     },
   },
   {
-    name: "시장 회복",
-    note: "위험 선호가 회복되며 플랫폼, 바이오, ETF가 고르게 반등합니다.",
+    name: "제조업 회복",
+    note: "수출과 설비투자 기대가 제조 공장, 중공업, 시장 ETF를 고르게 밀어 올립니다.",
     sectors: {
       semiconductor: 1.1,
-      auto: 0.9,
+      manufacturing: 2.4,
+      heavy: 1.6,
+      shipbuilding: 0.7,
       energy: -0.7,
-      platform: 2.4,
-      bio: 1.6,
       etf: 1.2,
       stable: 0.1,
     },
@@ -58,10 +58,10 @@ const scenarios = [
 
 const sectorLabels = {
   semiconductor: "반도체",
-  auto: "자동차",
+  manufacturing: "제조업",
+  heavy: "중공업",
+  shipbuilding: "조선업",
   energy: "에너지",
-  platform: "플랫폼",
-  bio: "바이오",
   etf: "ETF",
   stable: "안정자산",
 };
@@ -74,6 +74,7 @@ const assets = [
     sector: "stable",
     building: "중앙 금고",
     icon: "landmark",
+    visual: "vault",
     basePrice: 100,
     amount: 1200,
     alpha: 0,
@@ -86,8 +87,9 @@ const assets = [
     sector: "semiconductor",
     building: "반도체 공장",
     icon: "cpu",
+    visual: "chip",
     basePrice: 83600,
-    amount: 2100,
+    amount: 1900,
     alpha: 0.2,
     reason: "메모리 가격과 AI 서버 수요가 공장 가동률을 좌우합니다.",
   },
@@ -98,8 +100,9 @@ const assets = [
     sector: "semiconductor",
     building: "HBM 팹",
     icon: "microchip",
+    visual: "hbm",
     basePrice: 218500,
-    amount: 1400,
+    amount: 1300,
     alpha: 0.5,
     reason: "HBM 공급 기대가 커질수록 고층 생산동으로 확장되는 구조입니다.",
   },
@@ -107,13 +110,40 @@ const assets = [
     id: "hyundai",
     name: "현대차",
     ticker: "005380",
-    sector: "auto",
-    building: "자동차 공장",
-    icon: "car",
+    sector: "manufacturing",
+    building: "제조 공장",
+    icon: "factory",
+    visual: "manufacturing",
     basePrice: 246000,
     amount: 900,
     alpha: 0.1,
     reason: "환율, 판매량, 전기차 마진 변화가 도시 물류 수입에 반영됩니다.",
+  },
+  {
+    id: "posco",
+    name: "POSCO홀딩스",
+    ticker: "005490",
+    sector: "heavy",
+    building: "제철소",
+    icon: "hammer",
+    visual: "heavy",
+    basePrice: 386000,
+    amount: 900,
+    alpha: 0.2,
+    reason: "철강 가격, 원재료비, 인프라 투자 기대가 제철소의 열기와 생산량으로 반영됩니다.",
+  },
+  {
+    id: "shipyard",
+    name: "HD현대중공업",
+    ticker: "329180",
+    sector: "shipbuilding",
+    building: "조선소",
+    icon: "ship",
+    visual: "shipyard",
+    basePrice: 151000,
+    amount: 800,
+    alpha: 0.3,
+    reason: "선박 수주, 운임, 해양 플랜트 기대가 도크와 크레인 가동률을 바꿉니다.",
   },
   {
     id: "tigersemi",
@@ -122,8 +152,9 @@ const assets = [
     sector: "etf",
     building: "반도체 산업단지",
     icon: "factory",
+    visual: "complex",
     basePrice: 42800,
-    amount: 1200,
+    amount: 1100,
     alpha: 0.1,
     reason: "개별 종목보다 넓은 반도체 밸류체인 흐름을 도시 단지로 보여줍니다.",
   },
@@ -134,6 +165,7 @@ const assets = [
     sector: "etf",
     building: "시장 복합지구",
     icon: "blocks",
+    visual: "market",
     basePrice: 39200,
     amount: 1000,
     alpha: 0,
@@ -146,70 +178,47 @@ const assets = [
     sector: "energy",
     building: "에너지 플랜트",
     icon: "zap",
+    visual: "energy",
     basePrice: 31200,
-    amount: 800,
+    amount: 900,
     alpha: 0.3,
     reason: "태양광, 전력망, 원자재 이슈가 발전소 매출로 연결됩니다.",
-  },
-  {
-    id: "naver",
-    name: "NAVER",
-    ticker: "035420",
-    sector: "platform",
-    building: "데이터 타워",
-    icon: "server",
-    basePrice: 188000,
-    amount: 700,
-    alpha: -0.1,
-    reason: "광고 경기와 AI 서비스 기대가 데이터 타워의 임대 수익을 바꿉니다.",
-  },
-  {
-    id: "bio",
-    name: "삼성바이오로직스",
-    ticker: "207940",
-    sector: "bio",
-    building: "바이오 연구소",
-    icon: "flask-conical",
-    basePrice: 845000,
-    amount: 700,
-    alpha: 0.2,
-    reason: "수주와 공장 증설 기대가 연구소 레벨을 높입니다.",
   },
 ];
 
 const presets = {
   balanced: {
     cash: 1200,
-    samsung: 2100,
-    skhynix: 1400,
+    samsung: 1900,
+    skhynix: 1300,
     hyundai: 900,
-    tigersemi: 1200,
+    posco: 900,
+    shipyard: 800,
+    tigersemi: 1100,
     kodex200: 1000,
-    energy: 800,
-    naver: 700,
-    bio: 700,
+    energy: 900,
   },
   growth: {
     cash: 500,
     samsung: 2300,
     skhynix: 1800,
-    hyundai: 700,
+    hyundai: 900,
+    posco: 600,
+    shipyard: 500,
     tigersemi: 1300,
     kodex200: 800,
-    energy: 900,
-    naver: 900,
-    bio: 800,
+    energy: 1300,
   },
   defense: {
     cash: 2600,
-    samsung: 1300,
-    skhynix: 800,
-    hyundai: 800,
-    tigersemi: 900,
-    kodex200: 1800,
-    energy: 900,
-    naver: 400,
-    bio: 500,
+    samsung: 1200,
+    skhynix: 700,
+    hyundai: 700,
+    posco: 1100,
+    shipyard: 900,
+    tigersemi: 700,
+    kodex200: 1500,
+    energy: 600,
   },
 };
 
@@ -404,10 +413,11 @@ function renderCity() {
   const cityHall = `
     <button class="lot is-base ${state.selectedAssetId === "cash" ? "is-selected" : ""}" type="button" data-select-asset="cash">
       <span class="tile-ground"></span>
-      <div class="building city-hall">
+      <div class="building city-hall visual-cityhall">
         <span class="sprite-shadow"></span>
         <div class="building-body"></div>
         <span class="sprite-roof"></span>
+        <span class="sprite-addon"></span>
         <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i>시청</span>
       </div>
     </button>
@@ -415,10 +425,11 @@ function renderCity() {
 
   const lots = assets
     .filter((asset) => asset.id !== "cash")
-    .map((asset) => {
+    .map((asset, index) => {
+      const slotClass = `slot-pos-${index + 1}`;
       if (asset.amount <= 0) {
         return `
-          <button class="lot is-empty" type="button" data-select-asset="${asset.id}">
+          <button class="lot is-empty ${slotClass}" type="button" data-select-asset="${asset.id}">
             <span class="tile-ground"></span>
             <span class="empty-lot"><i aria-hidden="true"></i>${escapeHtml(sectorLabels[asset.sector])} 부지</span>
           </button>
@@ -427,12 +438,13 @@ function renderCity() {
 
       const tier = tierForAmount(asset.amount);
       return `
-        <button class="lot ${asset.id === state.selectedAssetId ? "is-selected" : ""}" type="button" data-select-asset="${asset.id}">
+        <button class="lot ${slotClass} ${asset.id === state.selectedAssetId ? "is-selected" : ""}" type="button" data-select-asset="${asset.id}">
           <span class="tile-ground"></span>
-          <div class="building tier-${tier} sector-${asset.sector}">
+          <div class="building tier-${tier} sector-${asset.sector} visual-${asset.visual}">
             <span class="sprite-shadow"></span>
             <div class="building-body"></div>
             <span class="sprite-roof"></span>
+            <span class="sprite-addon"></span>
             <span class="sprite-sign">${escapeHtml(asset.ticker)}</span>
             <span class="building-chip"><i data-lucide="${asset.icon}" aria-hidden="true"></i>${escapeHtml(asset.building)}</span>
           </div>
