@@ -83,6 +83,30 @@ const scenarios = [
   },
 ];
 
+const marketSessions = [
+  {
+    key: "morning",
+    label: "장 시작",
+    time: "09:00",
+    tone: "아침 안개",
+    note: "도시가 밝아지며 첫 주문과 자금 배치가 시작됩니다.",
+  },
+  {
+    key: "noon",
+    label: "장 중",
+    time: "12:30",
+    tone: "정오",
+    note: "햇빛이 강해지고 섹터별 수익률 차이가 또렷하게 드러납니다.",
+  },
+  {
+    key: "sunset",
+    label: "장 마감",
+    time: "15:30",
+    tone: "노을",
+    note: "노을빛 아래 하루 수익률이 정산되고 랭킹이 확정됩니다.",
+  },
+];
+
 const sectorLabels = {
   reserve: "예금·국채",
   etf: "ETF",
@@ -614,6 +638,7 @@ const els = {
   reportList: document.querySelector("#reportList"),
   nextMarketDay: document.querySelector("#nextMarketDay"),
   soundToggle: document.querySelector("#soundToggle"),
+  timeCycle: document.querySelector("#timeCycle"),
   toast: document.querySelector("#toast"),
 };
 
@@ -632,6 +657,11 @@ function cloneRival(template) {
 function getScenario(offset = 0) {
   const index = (state.day + offset + scenarios.length) % scenarios.length;
   return scenarios[index];
+}
+
+function getMarketSession(offset = 0) {
+  const index = (state.day + offset + marketSessions.length) % marketSessions.length;
+  return marketSessions[index];
 }
 
 function getAllAssets() {
@@ -1102,6 +1132,7 @@ function renderBuildingArt(visual, ticker = "") {
 
 function render() {
   const scenario = getScenario();
+  const session = getMarketSession();
   const selectedAssets = getSelectedAssets();
   const allocated = getAllocatedTotal(selectedAssets);
   const marketInvested = getMarketInvestedTotal(selectedAssets);
@@ -1111,8 +1142,9 @@ function render() {
   const investedRate = Math.min(allocated / SEED_MONEY, 1);
   const ruleValid = isRuleValid();
 
-  els.marketName.textContent = scenario.name;
-  els.marketPulse.textContent = `도시 생산성 ${percent((pnl / SEED_MONEY) * 100)}`;
+  document.body.dataset.marketSession = session.key;
+  els.marketName.textContent = `${session.time} · ${scenario.name}`;
+  els.marketPulse.textContent = `${session.label} · 도시 생산성 ${percent((pnl / SEED_MONEY) * 100)}`;
   els.cityLevel.textContent = operating >= 10500 ? "시청 Lv.3" : operating >= 10000 ? "시청 Lv.2" : "시청 Lv.1";
   els.cityStatus.textContent = ruleValid ? (pnl >= 0 ? "운영 자금 증가" : "방어 운영 중") : "스쿼드 규칙 확인";
   els.seedMoney.textContent = money(SEED_MONEY);
@@ -1132,6 +1164,7 @@ function render() {
   renderRuleStatus();
   renderSearch();
   renderScenarioTabs();
+  renderTimeCycle();
   renderAssets();
   renderCity();
   renderSectorStrip();
@@ -1156,6 +1189,21 @@ function renderRuleStatus() {
           <strong>${escapeHtml(rule.value)}</strong>
           <small>${escapeHtml(rule.help)}</small>
         </div>
+      `,
+    )
+    .join("");
+}
+
+function renderTimeCycle() {
+  const activeSession = getMarketSession();
+  els.timeCycle.innerHTML = marketSessions
+    .map(
+      (session) => `
+        <span class="time-chip ${session.key === activeSession.key ? "is-active" : ""}">
+          <i>${escapeHtml(session.time)}</i>
+          <strong>${escapeHtml(session.label)}</strong>
+          <small>${escapeHtml(session.tone)}</small>
+        </span>
       `,
     )
     .join("");
@@ -1289,10 +1337,17 @@ function renderCity() {
     .join("");
 
   const mapDecorations = `
+    <span class="map-route route-main" aria-hidden="true"></span>
+    <span class="map-route route-cross" aria-hidden="true"></span>
     <span class="map-deco deco-tree deco-tree-1" aria-hidden="true"></span>
     <span class="map-deco deco-tree deco-tree-2" aria-hidden="true"></span>
+    <span class="map-deco deco-hill deco-hill-1" aria-hidden="true"></span>
+    <span class="map-deco deco-hill deco-hill-2" aria-hidden="true"></span>
+    <span class="map-deco deco-farm" aria-hidden="true"></span>
     <span class="map-deco deco-crane" aria-hidden="true"></span>
     <span class="map-deco deco-water" aria-hidden="true"></span>
+    <span class="map-deco deco-cloud deco-cloud-1" aria-hidden="true"></span>
+    <span class="map-deco deco-cloud deco-cloud-2" aria-hidden="true"></span>
   `;
 
   els.cityMap.innerHTML = cityHall + lots + mapDecorations;
@@ -1898,7 +1953,8 @@ els.nextMarketDay.addEventListener("click", () => {
 
   state.day = (state.day + 1) % scenarios.length;
   const pnl = getDailyPnl();
-  showToast(`${getScenario().name} 결과를 반영했습니다.`);
+  const session = getMarketSession();
+  showToast(`${session.label} ${session.time} · ${getScenario().name} 결과를 반영했습니다.`);
   playSound(pnl >= 0 ? "marketAdvance" : "blocked");
   render();
 });

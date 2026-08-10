@@ -2089,3 +2089,554 @@ h3 {
     order: -1;
   }
 }
+
+/* Compact SLG art pass */
+body[data-market-session="morning"] {
+  --time-accent: #d98a35;
+  --time-soft: #fff0ca;
+  --map-grass-a: #b5da7c;
+  --map-grass-b: #78bc63;
+  --map-grass-c: #5c9d59;
+  --map-road: rgba(198, 152, 85, 0.5);
+  --map-light: rgba(255, 236, 188, 0.48);
+  background:
+    linear-gradient(180deg, rgba(255, 232, 184, 0.7), rgba(237, 242, 231, 0.94) 42%),
+    #edf2e7;
+}
+
+body[data-market-session="noon"] {
+  --time-accent: #2f8f46;
+  --time-soft: #e6f5d6;
+  --map-grass-a: #a7d878;
+  --map-grass-b: #6fbf63;
+  --map-grass-c: #4f9853;
+  --map-road: rgba(176, 132, 74, 0.48);
+  --map-light: rgba(255, 255, 225, 0.36);
+  background:
+    linear-gradient(180deg, rgba(218, 239, 255, 0.5), rgba(237, 242, 231, 0.96) 45%),
+    #edf2e7;
+}
+
+body[data-market-session="sunset"] {
+  --time-accent: #d46a3a;
+  --time-soft: #ffe1c8;
+  --map-grass-a: #c4c06e;
+  --map-grass-b: #93a957;
+  --map-grass-c: #6f7f4d;
+  --map-road: rgba(144, 91, 58, 0.54);
+  --map-light: rgba(255, 157, 95, 0.38);
+  background:
+    linear-gradient(180deg, rgba(255, 196, 138, 0.72), rgba(238, 226, 207, 0.96) 48%),
+    #eee2cf;
+}
+
+.dashboard {
+  grid-template-columns: minmax(540px, 680px) minmax(380px, 440px);
+  justify-content: center;
+}
+
+.city-stage {
+  width: min(100%, 680px);
+  height: min(560px, calc(100vh - 118px));
+  min-height: 520px;
+  max-height: 560px;
+  justify-self: end;
+  border-radius: 12px;
+}
+
+.allocation-panel,
+.insight-panel {
+  max-width: 440px;
+}
+
+.allocation-panel {
+  max-height: min(335px, calc((100vh - 116px) * 0.58));
+}
+
+.insight-panel {
+  max-height: min(225px, calc((100vh - 116px) * 0.42));
+}
+
+.stage-header {
+  top: 12px;
+  left: 12px;
+  right: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  justify-items: stretch;
+  width: min(378px, calc(100% - 24px));
+  padding: 11px;
+}
+
+.stage-header > div,
+.stage-header .time-cycle {
+  width: 100% !important;
+}
+
+.stage-header h2 {
+  min-height: 38px;
+}
+
+.scenario-tabs {
+  display: none;
+}
+
+.scenario-tab {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 0 8px;
+}
+
+.time-cycle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.time-chip {
+  display: grid;
+  gap: 2px;
+  min-height: 44px;
+  border: 1px solid rgba(80, 102, 76, 0.34);
+  border-radius: 8px;
+  background: rgba(255, 253, 244, 0.74);
+  padding: 6px 7px;
+}
+
+.time-chip i,
+.time-chip small {
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.time-chip strong {
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.time-chip.is-active {
+  border-color: color-mix(in srgb, var(--time-accent) 68%, #24422b);
+  background:
+    linear-gradient(135deg, var(--time-soft), rgba(255, 253, 244, 0.72)),
+    var(--time-accent);
+  box-shadow: inset 0 -3px 0 rgba(64, 52, 31, 0.12);
+}
+
+.time-chip.is-active strong {
+  color: color-mix(in srgb, var(--time-accent) 44%, #17221b);
+}
+
+.game-hud {
+  top: 152px;
+  left: 12px;
+  width: min(318px, calc(100% - 24px));
+  padding: 7px;
+}
+
+.game-hud div {
+  padding: 8px;
+}
+
+.sector-strip {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  max-height: 108px;
+  padding: 8px;
+}
+
+.city-map {
+  height: 100%;
+  min-height: 100%;
+  background:
+    linear-gradient(115deg, transparent 0 37%, var(--map-road) 38% 43%, transparent 44% 100%),
+    linear-gradient(35deg, transparent 0 45%, var(--map-road) 46% 50%, transparent 51% 100%),
+    linear-gradient(180deg, var(--map-light), transparent 34%),
+    radial-gradient(ellipse at 50% 56%, rgba(255, 253, 244, 0.26), transparent 42%),
+    repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 48px),
+    linear-gradient(180deg, var(--map-grass-a), var(--map-grass-b) 54%, var(--map-grass-c));
+}
+
+.city-map::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 18%, transparent 82%, rgba(30, 78, 40, 0.18)),
+    radial-gradient(ellipse at 52% 53%, transparent 0 40%, rgba(18, 54, 28, 0.18) 100%);
+}
+
+body[data-market-session="sunset"] .city-map::before {
+  background:
+    linear-gradient(120deg, rgba(255, 184, 107, 0.26), transparent 42%),
+    radial-gradient(ellipse at 52% 54%, transparent 0 39%, rgba(54, 35, 28, 0.26) 100%);
+}
+
+.map-route {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 211, 0.34), transparent 58%),
+    #b78f5e;
+  box-shadow:
+    inset 0 -5px 0 rgba(96, 62, 35, 0.18),
+    0 7px 14px rgba(44, 76, 44, 0.12);
+}
+
+.route-main {
+  left: 18%;
+  top: 48%;
+  width: 64%;
+  height: 26px;
+  transform: rotate(-22deg);
+}
+
+.route-cross {
+  left: 31%;
+  top: 32%;
+  width: 44%;
+  height: 22px;
+  transform: rotate(37deg);
+}
+
+.lot {
+  --x: 50%;
+  --y: 50%;
+  width: clamp(130px, 12vw, 164px);
+  height: 158px;
+  z-index: 3;
+}
+
+.lot.is-base {
+  --x: 50%;
+  --y: 52%;
+  width: 214px;
+  height: 196px;
+  z-index: 5;
+}
+
+.slot-pos-1 {
+  --x: 14%;
+  --y: 30%;
+  --rot: -7deg;
+}
+
+.slot-pos-2 {
+  --x: 36%;
+  --y: 24%;
+  --rot: 5deg;
+}
+
+.slot-pos-3 {
+  --x: 64%;
+  --y: 25%;
+  --rot: -4deg;
+}
+
+.slot-pos-4 {
+  --x: 84%;
+  --y: 36%;
+  --rot: 7deg;
+}
+
+.slot-pos-5 {
+  --x: 22%;
+  --y: 50%;
+  --rot: 4deg;
+}
+
+.slot-pos-6 {
+  --x: 78%;
+  --y: 53%;
+  --rot: -6deg;
+}
+
+.slot-pos-7 {
+  --x: 14%;
+  --y: 72%;
+  --rot: -3deg;
+}
+
+.slot-pos-8 {
+  --x: 36%;
+  --y: 78%;
+  --rot: 5deg;
+}
+
+.slot-pos-9 {
+  --x: 63%;
+  --y: 75%;
+  --rot: -5deg;
+}
+
+.slot-pos-10 {
+  --x: 86%;
+  --y: 77%;
+  --rot: 4deg;
+}
+
+.tile-ground {
+  width: 142px;
+  height: 82px;
+  border: 1px solid rgba(42, 82, 46, 0.16);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(49, 105, 54, 0.18)),
+    #95ca73;
+}
+
+.tile-ground::before {
+  content: "";
+  position: absolute;
+  inset: 11px 16px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(45, 91, 49, 0.12) 1px, transparent 1px) 0 0 / 18px 18px,
+    linear-gradient(0deg, rgba(45, 91, 49, 0.1) 1px, transparent 1px) 0 0 / 18px 18px;
+  transform: skewX(12deg);
+}
+
+.lot.is-base .tile-ground {
+  width: 208px;
+  height: 116px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 50%),
+    linear-gradient(180deg, rgba(255, 235, 159, 0.45), rgba(126, 87, 40, 0.14)),
+    #d3b66c;
+}
+
+.building.illustration {
+  width: 176px;
+  height: 146px;
+  filter:
+    drop-shadow(0 15px 14px rgba(31, 62, 38, 0.22))
+    saturate(1.06);
+}
+
+.lot.is-base .building.illustration {
+  width: 190px;
+  height: 158px;
+}
+
+.sprite-shadow {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: -1;
+  width: 118px;
+  height: 28px;
+  transform: translateX(-50%) skewX(-18deg) rotate(-7deg);
+  border-radius: 50%;
+  background: rgba(24, 49, 29, 0.2);
+  filter: blur(1px);
+}
+
+.building-art {
+  width: 176px;
+  height: 146px;
+}
+
+.building-art path,
+.building-art rect,
+.building-art circle {
+  stroke: #193822;
+  stroke-width: 3.3;
+}
+
+.building-art .ground,
+.building-art .water-ground {
+  opacity: 0.96;
+}
+
+.building-art .label-plate {
+  fill: rgba(255, 253, 244, 0.96);
+}
+
+.building-art .chip-package,
+.building-art .memory-mid,
+.building-art .plant,
+.building-art .complex-tower.b,
+.building-art .market-block.b {
+  filter: drop-shadow(0 6px 0 rgba(25, 56, 34, 0.12));
+}
+
+.building-art .hall-roof,
+.building-art .bank-roof,
+.building-art .factory-roof,
+.building-art .furnace,
+.building-art .ship,
+.building-art .cooling,
+.building-art .basket {
+  filter: drop-shadow(0 5px 0 rgba(25, 56, 34, 0.1));
+}
+
+.building-chip {
+  bottom: -7px;
+  border-color: rgba(31, 58, 37, 0.3);
+  background: rgba(255, 253, 244, 0.96);
+}
+
+.deco-tree-1 {
+  left: 31%;
+  top: 47%;
+}
+
+.deco-tree-2 {
+  right: 27%;
+  top: 56%;
+}
+
+.deco-hill {
+  width: 100px;
+  height: 48px;
+  border-radius: 52% 48% 18px 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 48%),
+    #6b9b58;
+  box-shadow: inset 0 -10px 0 rgba(37, 81, 44, 0.17);
+}
+
+.deco-hill::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 10px;
+  width: 28px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.deco-hill-1 {
+  left: 7%;
+  top: 39%;
+}
+
+.deco-hill-2 {
+  right: 8%;
+  top: 18%;
+  transform: scale(0.8);
+}
+
+.deco-farm {
+  left: 42%;
+  top: 36%;
+  width: 94px;
+  height: 50px;
+  transform: skewX(-18deg) rotate(-7deg);
+  border-radius: 14px;
+  background:
+    repeating-linear-gradient(90deg, rgba(80, 117, 47, 0.34) 0 5px, transparent 5px 15px),
+    #c7bf63;
+  box-shadow: inset 0 -8px 0 rgba(87, 88, 38, 0.12);
+}
+
+.deco-cloud {
+  width: 72px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(255, 253, 244, 0.66);
+  filter: blur(0.2px);
+}
+
+.deco-cloud::before,
+.deco-cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.deco-cloud::before {
+  left: 12px;
+  top: -9px;
+  width: 28px;
+  height: 28px;
+}
+
+.deco-cloud::after {
+  right: 12px;
+  top: -6px;
+  width: 22px;
+  height: 22px;
+}
+
+.deco-cloud-1 {
+  left: 52%;
+  top: 15%;
+}
+
+.deco-cloud-2 {
+  right: 9%;
+  top: 43%;
+  opacity: 0.48;
+  transform: scale(0.78);
+}
+
+body[data-market-session="sunset"] .deco-cloud {
+  background: rgba(255, 216, 189, 0.54);
+}
+
+body[data-market-session="sunset"] .building.illustration {
+  filter:
+    drop-shadow(0 18px 16px rgba(65, 40, 34, 0.25))
+    sepia(0.12)
+    saturate(1.1);
+}
+
+@media (max-width: 1180px) {
+  .dashboard {
+    justify-content: stretch;
+  }
+
+  .city-stage {
+    width: 100%;
+    height: auto;
+    min-height: 650px;
+    max-height: none;
+    justify-self: stretch;
+  }
+
+  .allocation-panel,
+  .insight-panel {
+    max-width: none;
+    max-height: none;
+  }
+
+  .city-map {
+    min-height: 650px;
+  }
+}
+
+@media (max-width: 620px) {
+  .city-stage {
+    min-height: auto;
+  }
+
+  .city-map {
+    height: auto;
+    min-height: auto;
+  }
+
+  .map-route,
+  .deco-cloud,
+  .deco-farm,
+  .deco-hill {
+    display: none;
+  }
+
+  .time-cycle {
+    grid-template-columns: 1fr;
+  }
+
+  .lot,
+  .lot.is-base {
+    width: auto;
+    height: 178px;
+  }
+}
