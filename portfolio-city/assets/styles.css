@@ -3360,3 +3360,245 @@ body[data-market-session="noon"] .city-map::after {
     display: none;
   }
 }
+
+/* Seoul art-map building integration pass */
+.lot {
+  border-color: rgba(236, 231, 196, 0.2);
+  background: transparent;
+}
+
+.lot:hover,
+.lot.is-selected {
+  background: rgba(255, 253, 244, 0.12);
+  box-shadow:
+    0 14px 28px rgba(20, 41, 29, 0.22),
+    inset 0 0 0 1px rgba(255, 253, 244, 0.26);
+}
+
+.tile-ground {
+  width: 124px;
+  height: 66px;
+  border-color: rgba(74, 90, 68, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 227, 0.22), transparent 48%),
+    linear-gradient(180deg, rgba(87, 129, 83, 0.2), rgba(71, 82, 62, 0.18)),
+    rgba(142, 161, 103, 0.36);
+  box-shadow:
+    inset 0 -8px 0 rgba(54, 73, 47, 0.08),
+    0 12px 22px rgba(22, 41, 28, 0.14);
+}
+
+.tile-ground::before {
+  inset: 10px 14px;
+  opacity: 0.46;
+  background:
+    linear-gradient(90deg, rgba(72, 84, 62, 0.18) 1px, transparent 1px) 0 0 / 15px 15px,
+    linear-gradient(0deg, rgba(72, 84, 62, 0.16) 1px, transparent 1px) 0 0 / 15px 15px;
+}
+
+.lot.is-base .tile-ground {
+  width: 182px;
+  height: 96px;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 232, 0.34), transparent 46%),
+    linear-gradient(180deg, rgba(192, 171, 103, 0.42), rgba(91, 78, 53, 0.16)),
+    rgba(169, 147, 88, 0.46);
+}
+
+.building.illustration {
+  width: 154px;
+  height: 128px;
+  filter:
+    drop-shadow(0 15px 16px rgba(18, 35, 27, 0.3))
+    saturate(0.82)
+    brightness(0.94)
+    contrast(0.94);
+  opacity: 0.96;
+}
+
+.lot.is-base .building.illustration {
+  width: 170px;
+  height: 140px;
+}
+
+.building-art {
+  width: 154px;
+  height: 128px;
+  filter: drop-shadow(0 8px 8px rgba(22, 42, 31, 0.16));
+}
+
+.lot.is-base .building-art {
+  width: 170px;
+  height: 140px;
+}
+
+.building-art path,
+.building-art rect,
+.building-art circle {
+  stroke: rgba(39, 55, 45, 0.74);
+  stroke-width: 1.75;
+  vector-effect: non-scaling-stroke;
+}
+
+.building-art .iso-shadow {
+  fill: rgba(18, 34, 27, 0.22);
+}
+
+.building-art .lot-tile {
+  fill: rgba(132, 161, 105, 0.52);
+  stroke: rgba(53, 69, 51, 0.2);
+}
+
+.building-art .lot-path,
+.building-art .plaza-tile {
+  fill: rgba(181, 158, 105, 0.32);
+  stroke: rgba(82, 79, 58, 0.18);
+}
+
+.building-art .tree-crown {
+  fill: rgba(86, 128, 77, 0.72);
+  stroke-width: 1.2;
+}
+
+.building-art .tree-trunk {
+  fill: rgba(105, 82, 52, 0.76);
+  stroke-width: 1.1;
+}
+
+.building-art .hall-base,
+.building-art .hall-wing,
+.building-art .hall-tower,
+.building-art .bank-base,
+.building-art .treasury-base,
+.building-art .treasury-dome {
+  fill: #b99662;
+}
+
+.building-art .hall-side,
+.building-art .bank-side,
+.building-art .treasury-side,
+.building-art .tech-side,
+.building-art .factory-side,
+.building-art .steel-side,
+.building-art .bond-tower-side {
+  fill: #6f837c;
+}
+
+.building-art .hall-roof,
+.building-art .bank-roof,
+.building-art .bond-roof,
+.building-art .plant-roof,
+.building-art .market-roof,
+.building-art .complex-roof,
+.building-art .memory-roof,
+.building-art .factory-roof {
+  fill: #6d614d;
+}
+
+.building-art .tech-face,
+.building-art .factory-front,
+.building-art .complex-tower.b,
+.building-art .market-block.b {
+  fill: #6f9da8;
+}
+
+.building-art .tech-side,
+.building-art .memory-mid,
+.building-art .complex-tower.c,
+.building-art .market-block.c {
+  fill: #587e99;
+}
+
+.building-art .tech-core,
+.building-art .memory,
+.building-art .memory-front,
+.building-art .complex-tower.a,
+.building-art .market-block.a {
+  fill: #79a788;
+}
+
+.building-art .memory-back,
+.building-art .bond-tower,
+.building-art .ship,
+.building-art .cooling {
+  fill: #d2d6c5;
+}
+
+.building-art .steel-base,
+.building-art .furnace,
+.building-art .chimney,
+.building-art .main-door,
+.building-art .garage-door {
+  fill: #725b4a;
+}
+
+.building-art .plant,
+.building-art .basket,
+.building-art .coin,
+.building-art .clock {
+  fill: #d0b66f;
+}
+
+.building-art .warm-window,
+.building-art .blue-window,
+.building-art .green-window {
+  stroke: rgba(47, 65, 55, 0.34);
+  stroke-width: 0.9;
+  opacity: 0.76;
+}
+
+.building-art .warm-window {
+  fill: #e2d39c;
+}
+
+.building-art .blue-window {
+  fill: #a9c7cd;
+}
+
+.building-art .green-window {
+  fill: #a9c4a3;
+}
+
+.building-art .flag {
+  fill: #b85f4f;
+}
+
+.building-art .seal,
+.building-art .ribbon,
+.building-art .molten,
+.building-art .bolt {
+  filter: saturate(0.72) brightness(0.9);
+}
+
+.building-art .smoke,
+.building-art .steam,
+.building-art .waves {
+  opacity: 0.68;
+}
+
+.sprite-shadow {
+  bottom: 18px;
+  width: 104px;
+  height: 24px;
+  background: rgba(16, 32, 24, 0.24);
+  filter: blur(1.4px);
+}
+
+.building-chip {
+  bottom: -5px;
+  max-width: 132px;
+  min-height: 22px;
+  border-color: rgba(49, 63, 52, 0.24);
+  background: rgba(244, 239, 214, 0.84);
+  box-shadow: 0 7px 14px rgba(18, 36, 27, 0.16);
+  color: #24332b;
+  font-size: 10px;
+}
+
+body[data-market-session="sunset"] .building.illustration {
+  filter:
+    drop-shadow(0 16px 18px rgba(46, 31, 30, 0.32))
+    sepia(0.12)
+    saturate(0.88)
+    brightness(0.9);
+}

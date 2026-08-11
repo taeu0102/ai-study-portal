@@ -24,3 +24,9 @@ AI study outputs portal with Supabase authentication.
 - Generated and applied a Seoul-inspired SLG map background from the 2020+ reference-board direction.
 - Added `portfolio-city/assets/images/seoul-game-map-bg-v1.webp` and documented the generation direction for future Seoul-based building assets.
 - Replaced the old CSS-only symbolic Seoul decorations with the generated map art and kept CSS time-of-day overlays for morning, noon, and sunset.
+
+## 2026-08-11 Portfolio City Building Art Blend
+
+- Retuned the in-app SVG building art to better match the generated Seoul map background.
+- Reduced building saturation, stroke weight, label opacity, and tile-pad intensity so buildings read as part of the same SLG illustration layer.
+- Kept the existing building SVG structure for future Seoul-based asset replacement.
