@@ -3148,37 +3148,54 @@ body[data-market-session="sunset"] .building.illustration {
   }
 }
 
-/* Seoul map background pass */
+/* Generated Seoul map background pass */
 .city-map {
+  isolation: isolate;
   background:
-    linear-gradient(92deg, transparent 0 31%, rgba(174, 139, 82, 0.22) 32% 35%, transparent 36%),
-    linear-gradient(88deg, transparent 0 63%, rgba(174, 139, 82, 0.18) 64% 67%, transparent 68%),
-    linear-gradient(4deg, transparent 0 51%, rgba(174, 139, 82, 0.24) 52% 55%, transparent 56%),
-    radial-gradient(ellipse at 42% 36%, rgba(255, 253, 244, 0.25), transparent 34%),
-    radial-gradient(ellipse at 70% 72%, rgba(255, 253, 244, 0.2), transparent 30%),
-    repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 46px),
-    linear-gradient(180deg, #b8d493, #79b86b 52%, #5c9d59);
+    linear-gradient(180deg, rgba(255, 253, 244, 0.08), rgba(38, 67, 48, 0.15)),
+    url("./images/seoul-game-map-bg-v1.webp") center / cover no-repeat;
+}
+
+.city-map::before {
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  background:
+    radial-gradient(ellipse at 50% 48%, transparent 0 52%, rgba(18, 45, 30, 0.22) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 26%, rgba(30, 55, 38, 0.12));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 253, 244, 0.16),
+    inset 0 28px 72px rgba(255, 253, 244, 0.15),
+    inset 0 -32px 72px rgba(23, 48, 31, 0.24);
 }
 
 .city-map::after {
-  right: auto;
-  left: 3%;
-  top: 8%;
+  inset: 0;
   z-index: 0;
-  width: 94%;
-  height: 112px;
-  border-radius: 42% 58% 18px 18px;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.23), transparent 42%),
-    radial-gradient(ellipse at 18% 86%, rgba(73, 128, 67, 0.58) 0 34px, transparent 35px),
-    radial-gradient(ellipse at 38% 82%, rgba(83, 139, 74, 0.48) 0 42px, transparent 43px),
-    radial-gradient(ellipse at 68% 84%, rgba(73, 128, 67, 0.45) 0 36px, transparent 37px),
-    radial-gradient(ellipse at 89% 80%, rgba(91, 145, 82, 0.42) 0 30px, transparent 31px);
+    linear-gradient(90deg, rgba(255, 253, 244, 0.1), transparent 18%, transparent 82%, rgba(30, 61, 42, 0.16)),
+    radial-gradient(circle at 52% 53%, rgba(255, 252, 220, 0.1), transparent 18%);
   transform: none;
-  box-shadow:
-    inset 0 -13px 0 rgba(59, 101, 53, 0.13),
-    0 9px 18px rgba(36, 70, 42, 0.14);
-  opacity: 0.72;
+  box-shadow: none;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.map-route,
+.deco-tree,
+.deco-hill,
+.deco-farm,
+.deco-crane,
+.deco-cloud,
+.seoul-river,
+.seoul-bridge,
+.seoul-namsan,
+.seoul-lotte,
+.seoul-mountain {
+  display: none;
 }
 
 .seoul-river {
@@ -3316,11 +3333,23 @@ body[data-market-session="sunset"] .building.illustration {
   display: none;
 }
 
-body[data-market-session="sunset"] .seoul-river,
 body[data-market-session="sunset"] .city-map::after {
   background:
-    linear-gradient(180deg, rgba(255, 229, 196, 0.28), transparent 45%),
-    #87afbb;
+    linear-gradient(120deg, rgba(255, 188, 116, 0.3), transparent 42%),
+    radial-gradient(circle at 62% 12%, rgba(255, 225, 156, 0.22), transparent 18%),
+    linear-gradient(180deg, rgba(76, 44, 36, 0.08), rgba(62, 36, 46, 0.22));
+}
+
+body[data-market-session="morning"] .city-map::after {
+  background:
+    linear-gradient(115deg, rgba(255, 244, 202, 0.24), transparent 45%),
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 231, 0.2), transparent 16%);
+}
+
+body[data-market-session="noon"] .city-map::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 34%),
+    radial-gradient(circle at 52% 52%, rgba(255, 252, 220, 0.08), transparent 18%);
 }
 
 @media (max-width: 620px) {
