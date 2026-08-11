@@ -174,8 +174,8 @@ h1 {
   min-height: 186px;
   border-bottom: 1px solid rgba(112, 134, 111, 0.24);
   background:
-    linear-gradient(115deg, transparent 0 38%, rgba(174, 139, 82, 0.24) 39% 44%, transparent 45%),
-    linear-gradient(28deg, transparent 0 46%, rgba(96, 154, 187, 0.38) 47% 57%, transparent 58%),
+    linear-gradient(90deg, transparent 0 31%, rgba(174, 139, 82, 0.18) 32% 35%, transparent 36%),
+    linear-gradient(3deg, transparent 0 50%, rgba(174, 139, 82, 0.2) 51% 54%, transparent 55%),
     radial-gradient(ellipse at 50% 72%, rgba(255, 253, 244, 0.5), transparent 42%),
     repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.15) 0 2px, transparent 2px 36px),
     linear-gradient(180deg, #b9d797, #78b967 58%, #5b9b58);
@@ -185,15 +185,15 @@ h1 {
 .art-frame::before {
   content: "";
   position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 18px;
-  height: 34px;
-  border-radius: 50% 50% 42% 58%;
+  left: -12px;
+  right: -12px;
+  top: 106px;
+  height: 42px;
+  border-radius: 45% 58% 43% 57%;
   background:
-    linear-gradient(90deg, transparent 0 12%, rgba(255, 255, 255, 0.62) 12% 14%, transparent 14% 34%, rgba(255, 255, 255, 0.54) 34% 36%, transparent 36% 66%, rgba(255, 255, 255, 0.54) 66% 68%, transparent 68%),
+    linear-gradient(90deg, transparent 0 14%, rgba(255, 255, 255, 0.6) 14% 15%, transparent 15% 37%, rgba(255, 255, 255, 0.54) 37% 38%, transparent 38% 62%, rgba(255, 255, 255, 0.5) 62% 63%, transparent 63%),
     rgba(101, 177, 202, 0.58);
-  transform: rotate(-8deg);
+  transform: rotate(-2deg);
   opacity: 0.78;
 }
 
@@ -201,7 +201,7 @@ h1 {
   content: "";
   position: absolute;
   right: 18px;
-  top: 18px;
+  top: 28px;
   width: 76px;
   height: 42px;
   background:
