@@ -3153,7 +3153,7 @@ body[data-market-session="sunset"] .building.illustration {
   isolation: isolate;
   background:
     linear-gradient(180deg, rgba(255, 253, 244, 0.08), rgba(38, 67, 48, 0.15)),
-    url("./images/seoul-game-map-bg-v2.webp") center / cover no-repeat;
+    url("./images/seoul-game-map-bg-v3.webp") 65% center / cover no-repeat;
 }
 
 .city-map::before {
@@ -3603,80 +3603,80 @@ body[data-market-session="sunset"] .building.illustration {
     brightness(0.9);
 }
 
-/* Wide Seoul redevelopment-site pass */
+/* Seoul parcel-fit pass */
 .lot.is-base {
-  --x: 49%;
-  --y: 68%;
+  --x: 45%;
+  --y: 65.8%;
 }
 
 .slot-pos-1 {
-  --x: 61%;
-  --y: 23%;
+  --x: 56%;
+  --y: 27.5%;
   --rot: -4deg;
 }
 
 .slot-pos-2 {
-  --x: 74%;
-  --y: 23%;
+  --x: 71%;
+  --y: 27.5%;
   --rot: 3deg;
 }
 
 .slot-pos-3 {
   --x: 20%;
-  --y: 49%;
+  --y: 46.3%;
   --rot: -3deg;
 }
 
 .slot-pos-4 {
-  --x: 36%;
-  --y: 49%;
+  --x: 32%;
+  --y: 46%;
   --rot: 4deg;
 }
 
 .slot-pos-5 {
-  --x: 53%;
-  --y: 49%;
+  --x: 50%;
+  --y: 46.6%;
   --rot: -5deg;
 }
 
 .slot-pos-6 {
-  --x: 70%;
-  --y: 49%;
+  --x: 67%;
+  --y: 47.5%;
   --rot: -4deg;
 }
 
 .slot-pos-7 {
   --x: 72%;
-  --y: 64%;
+  --y: 59.1%;
   --rot: 3deg;
 }
 
 .slot-pos-8 {
-  --x: 33%;
-  --y: 64%;
+  --x: 26%;
+  --y: 67.1%;
   --rot: -3deg;
 }
 
 .slot-pos-9 {
-  --x: 18%;
-  --y: 76%;
+  --x: 19%;
+  --y: 79.8%;
   --rot: 4deg;
 }
 
 .slot-pos-10 {
-  --x: 92%;
-  --y: 76%;
+  --x: 94%;
+  --y: 76.5%;
   --rot: -4deg;
 }
 
 .lot {
-  width: 104px;
-  height: 112px;
+  width: 90px;
+  height: 98px;
 }
 
 .lot.is-base {
-  width: 142px;
-  height: 136px;
+  width: 128px;
+  height: 122px;
 }
 
 .tile-ground {
@@ -3691,7 +3691,7 @@ body[data-market-session="sunset"] .building.illustration {
     0 9px 15px rgba(15, 31, 24, 0.18),
     inset 0 0 0 2px rgba(241, 231, 177, 0.2),
     inset 0 -6px 0 rgba(42, 67, 43, 0.14);
-  opacity: 0.58;
+  opacity: 0;
 }
 
 .tile-ground::before {
@@ -3727,33 +3727,33 @@ body[data-market-session="sunset"] .building.illustration {
 
 .building.illustration,
 .building-art {
-  width: 94px;
-  height: 80px;
+  width: 80px;
+  height: 68px;
 }
 
 .lot.is-base .building.illustration,
 .lot.is-base .building-art {
-  width: 122px;
-  height: 104px;
+  width: 108px;
+  height: 92px;
 }
 
 .sprite-shadow {
-  bottom: 13px;
-  width: 72px;
-  height: 16px;
+  bottom: 11px;
+  width: 64px;
+  height: 14px;
 }
 
 .building-chip {
   bottom: -3px;
-  max-width: 102px;
-  min-height: 20px;
-  padding-inline: 6px;
+  max-width: 88px;
+  min-height: 19px;
+  padding-inline: 5px;
   gap: 4px;
-  font-size: 9px;
+  font-size: 8.5px;
 }
 
 .lot.is-base .building-chip {
-  max-width: 104px;
+  max-width: 96px;
 }
 
 .building-chip svg {
@@ -3765,4 +3765,33 @@ body[data-market-session="sunset"] .building.illustration {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media (min-width: 1181px) {
+  .stage-header {
+    width: min(360px, calc(100% - 24px));
+  }
+
+  .sector-strip {
+    bottom: 8px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
+    max-height: 48px;
+    overflow: hidden;
+    padding: 5px 8px;
+  }
+
+  .sector-card {
+    padding: 4px 6px;
+  }
+
+  .sector-card span {
+    font-size: 9px;
+  }
+
+  .sector-card strong {
+    margin-top: 1px;
+    font-size: 13px;
+    line-height: 1.1;
+  }
 }
