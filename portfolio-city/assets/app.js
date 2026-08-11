@@ -1371,7 +1371,7 @@ function renderCity() {
       <div class="building illustration city-hall visual-cityhall">
         <span class="sprite-shadow"></span>
         ${renderBuildingArt("cityhall")}
-        <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i>시청</span>
+        <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i><span class="chip-label">시청</span></span>
       </div>
     </div>
   `;
@@ -1397,7 +1397,7 @@ function renderCity() {
           <div class="building illustration tier-${tier} sector-${asset.sector} visual-${asset.visual}">
             <span class="sprite-shadow"></span>
             ${renderBuildingArt(asset.visual, asset.ticker)}
-            <span class="building-chip"><i data-lucide="${asset.icon}" aria-hidden="true"></i>${escapeHtml(asset.building)}</span>
+            <span class="building-chip"><i data-lucide="${asset.icon}" aria-hidden="true"></i><span class="chip-label">${escapeHtml(asset.name)}</span></span>
           </div>
         </button>
       `;
@@ -1456,11 +1456,11 @@ function renderDetail() {
       <div class="detail-icon"><i data-lucide="${asset.icon}" aria-hidden="true"></i></div>
       <div>
         <span class="eyebrow">${escapeHtml(asset.ticker)}</span>
-        <h3>${escapeHtml(asset.building)}</h3>
+        <h3>${escapeHtml(asset.name)}</h3>
       </div>
     </div>
     <div class="detail-meta">
-      <span class="badge">${escapeHtml(asset.name)}</span>
+      <span class="badge">${escapeHtml(asset.building)}</span>
       <span class="badge ${status.className}">${status.label}</span>
       <span class="badge">${escapeHtml(riskLabels[asset.riskType])}</span>
       <span class="badge">${escapeHtml(assetClassLabels[asset.assetClass])}</span>
@@ -1495,7 +1495,7 @@ function fallbackNewsForAsset(asset) {
       title: `${asset.name}, ${sector} 흐름 속 ${percent(getReturn(asset))} 반응`,
       source: "학습용 샘플",
       publishedAt: "오늘",
-      summary: `${scenario.name} 국면에서 ${asset.building}의 수익률이 도시 운영 자금에 반영됐습니다.`,
+      summary: `${scenario.name} 국면에서 ${asset.name}의 수익률이 도시 운영 자금에 반영됐습니다.`,
       url: makeSearchUrl(asset),
     },
     {
@@ -1706,11 +1706,11 @@ function renderReport() {
   els.reportList.innerHTML = `
     <div class="report-item">
       <i data-lucide="trending-up" aria-hidden="true"></i>
-      <p><strong>성장 엔진</strong>${escapeHtml(best.asset.building)}이 ${percent(best.rate)}로 ${best.impact >= 0 ? "+" : ""}${money(best.impact)}를 만들었습니다.</p>
+      <p><strong>성장 엔진</strong>${escapeHtml(best.asset.name)}이 ${percent(best.rate)}로 ${best.impact >= 0 ? "+" : ""}${money(best.impact)}를 만들었습니다.</p>
     </div>
     <div class="report-item">
       <i data-lucide="triangle-alert" aria-hidden="true"></i>
-      <p><strong>부담 구역</strong>${escapeHtml(worst.asset.building)}의 영향은 ${worst.impact >= 0 ? "+" : ""}${money(worst.impact)}입니다.</p>
+      <p><strong>부담 구역</strong>${escapeHtml(worst.asset.name)}의 영향은 ${worst.impact >= 0 ? "+" : ""}${money(worst.impact)}입니다.</p>
     </div>
     <div class="report-item">
       <i data-lucide="shield-check" aria-hidden="true"></i>

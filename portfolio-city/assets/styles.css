@@ -3602,3 +3602,90 @@ body[data-market-session="sunset"] .building.illustration {
     saturate(0.88)
     brightness(0.9);
 }
+
+/* Seoul map layout and stock-label pass */
+.lot.is-base {
+  --x: 52%;
+  --y: 54%;
+}
+
+.slot-pos-1 {
+  --x: 70%;
+  --y: 24%;
+  --rot: -4deg;
+}
+
+.slot-pos-2 {
+  --x: 80%;
+  --y: 31%;
+  --rot: 3deg;
+}
+
+.slot-pos-3 {
+  --x: 68%;
+  --y: 43%;
+  --rot: -3deg;
+}
+
+.slot-pos-4 {
+  --x: 86%;
+  --y: 50%;
+  --rot: 4deg;
+}
+
+.slot-pos-5 {
+  --x: 31%;
+  --y: 60%;
+  --rot: -5deg;
+}
+
+.slot-pos-6 {
+  --x: 72%;
+  --y: 59%;
+  --rot: -4deg;
+}
+
+.slot-pos-7 {
+  --x: 23%;
+  --y: 69%;
+  --rot: 3deg;
+}
+
+.slot-pos-8 {
+  --x: 43%;
+  --y: 66%;
+  --rot: -3deg;
+}
+
+.slot-pos-9 {
+  --x: 62%;
+  --y: 66%;
+  --rot: 4deg;
+}
+
+.slot-pos-10 {
+  --x: 80%;
+  --y: 68%;
+  --rot: -4deg;
+}
+
+.building-chip {
+  max-width: 142px;
+  padding-inline: 8px;
+  gap: 5px;
+}
+
+.lot.is-base .building-chip {
+  max-width: 112px;
+}
+
+.building-chip svg {
+  flex: 0 0 auto;
+}
+
+.chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
