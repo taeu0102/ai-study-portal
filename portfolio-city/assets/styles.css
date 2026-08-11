@@ -3603,70 +3603,115 @@ body[data-market-session="sunset"] .building.illustration {
     brightness(0.9);
 }
 
-/* Seoul map layout and stock-label pass */
+/* Seoul map land-lot and stock-label pass */
 .lot.is-base {
-  --x: 52%;
-  --y: 54%;
+  --x: 51%;
+  --y: 64%;
 }
 
 .slot-pos-1 {
-  --x: 70%;
-  --y: 24%;
+  --x: 66%;
+  --y: 20%;
   --rot: -4deg;
 }
 
 .slot-pos-2 {
-  --x: 80%;
-  --y: 31%;
+  --x: 78%;
+  --y: 21%;
   --rot: 3deg;
 }
 
 .slot-pos-3 {
-  --x: 68%;
-  --y: 43%;
+  --x: 88%;
+  --y: 23%;
   --rot: -3deg;
 }
 
 .slot-pos-4 {
-  --x: 86%;
-  --y: 50%;
+  --x: 28%;
+  --y: 58%;
   --rot: 4deg;
 }
 
 .slot-pos-5 {
-  --x: 31%;
-  --y: 60%;
+  --x: 39%;
+  --y: 61%;
   --rot: -5deg;
 }
 
 .slot-pos-6 {
-  --x: 72%;
-  --y: 59%;
+  --x: 63%;
+  --y: 58%;
   --rot: -4deg;
 }
 
 .slot-pos-7 {
-  --x: 23%;
-  --y: 69%;
+  --x: 19%;
+  --y: 66%;
   --rot: 3deg;
 }
 
 .slot-pos-8 {
-  --x: 43%;
-  --y: 66%;
+  --x: 33%;
+  --y: 69%;
   --rot: -3deg;
 }
 
 .slot-pos-9 {
-  --x: 62%;
-  --y: 66%;
+  --x: 68%;
+  --y: 68%;
   --rot: 4deg;
 }
 
 .slot-pos-10 {
-  --x: 80%;
-  --y: 68%;
+  --x: 83%;
+  --y: 64%;
   --rot: -4deg;
+}
+
+.tile-ground {
+  bottom: 9px;
+  width: 132px;
+  height: 72px;
+  border: 1px solid rgba(54, 72, 49, 0.34);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 213, 0.44), transparent 42%),
+    linear-gradient(180deg, rgba(139, 154, 98, 0.84), rgba(78, 111, 70, 0.9));
+  box-shadow:
+    0 15px 22px rgba(15, 31, 24, 0.24),
+    inset 0 0 0 2px rgba(241, 231, 177, 0.2),
+    inset 0 -9px 0 rgba(42, 67, 43, 0.16);
+}
+
+.tile-ground::before {
+  inset: 9px 13px;
+  opacity: 0.72;
+  border: 1px solid rgba(238, 229, 180, 0.24);
+  background:
+    linear-gradient(90deg, rgba(43, 63, 48, 0.2) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(0deg, rgba(43, 63, 48, 0.18) 1px, transparent 1px) 0 0 / 16px 16px,
+    rgba(214, 197, 128, 0.14);
+}
+
+.tile-ground::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(30, 50, 37, 0.22);
+  box-shadow: 0 5px 8px rgba(13, 28, 21, 0.14);
+}
+
+.lot.is-base .tile-ground {
+  bottom: 7px;
+  width: 176px;
+  height: 96px;
+  background:
+    linear-gradient(135deg, rgba(255, 251, 210, 0.5), transparent 44%),
+    linear-gradient(180deg, rgba(178, 156, 91, 0.88), rgba(101, 88, 58, 0.9));
 }
 
 .building-chip {
