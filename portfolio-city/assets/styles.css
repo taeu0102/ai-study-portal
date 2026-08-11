@@ -3147,3 +3147,746 @@ body[data-market-session="sunset"] .building.illustration {
     min-height: auto;
   }
 }
+
+/* Warzone tactical visual pass */
+:root {
+  --bg: #161b17;
+  --surface: #f2ecd6;
+  --surface-soft: #dfd7bd;
+  --line: #8c876f;
+  --line-strong: #4f5a49;
+  --text: #23251f;
+  --muted: #676452;
+  --green: #526d42;
+  --green-soft: #d8dfc0;
+  --blue: #3f6f87;
+  --teal: #577f78;
+  --amber: #c08a36;
+  --red: #b94f3e;
+  --gold: #b49355;
+  --shadow: 0 22px 48px rgba(11, 16, 12, 0.28);
+}
+
+body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(195, 134, 53, 0.24), transparent 29%),
+    radial-gradient(circle at 82% 18%, rgba(63, 111, 135, 0.2), transparent 31%),
+    linear-gradient(145deg, rgba(41, 50, 39, 0.96), rgba(24, 28, 24, 0.98) 48%, rgba(58, 50, 36, 0.96)),
+    #161b17;
+}
+
+.topbar {
+  border-bottom-color: rgba(214, 199, 151, 0.24);
+  background:
+    linear-gradient(180deg, rgba(40, 48, 41, 0.96), rgba(24, 30, 25, 0.94)),
+    #20271f;
+  box-shadow: 0 14px 34px rgba(4, 8, 6, 0.36);
+}
+
+.brand,
+.topbar .icon-button,
+.market-pill {
+  color: #eee8d1;
+}
+
+.brand-mark {
+  background:
+    linear-gradient(145deg, #8b6a34, #3d5d45),
+    #536241;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 240, 180, 0.22),
+    0 12px 24px rgba(0, 0, 0, 0.26);
+}
+
+.brand small {
+  color: rgba(238, 232, 209, 0.72);
+}
+
+.market-pill {
+  border-color: rgba(214, 199, 151, 0.28);
+  background:
+    linear-gradient(135deg, rgba(238, 232, 209, 0.12), rgba(92, 105, 74, 0.34)),
+    rgba(22, 27, 23, 0.86);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.market-pill strong {
+  background: rgba(192, 138, 54, 0.2);
+  color: #f1cf83;
+}
+
+.icon-button,
+.primary-button,
+.secondary-button,
+.mini-button,
+.scenario-tab,
+.filter-tab {
+  border-color: rgba(81, 89, 70, 0.55);
+  background: #e5dcc3;
+  color: #22261f;
+}
+
+.icon-button {
+  background: rgba(227, 219, 194, 0.9);
+}
+
+.topbar .icon-button {
+  border-color: rgba(214, 199, 151, 0.34);
+  background:
+    linear-gradient(180deg, rgba(52, 62, 48, 0.96), rgba(27, 34, 28, 0.94)),
+    #20271f;
+  color: #eee8d1;
+}
+
+.topbar .icon-button:hover {
+  border-color: rgba(231, 198, 113, 0.58);
+  background:
+    linear-gradient(180deg, rgba(76, 87, 62, 0.98), rgba(36, 43, 33, 0.96)),
+    #303929;
+}
+
+.primary-button {
+  background:
+    linear-gradient(135deg, #9f7839, #4f693f),
+    #6c6238;
+  color: #fff7de;
+}
+
+.secondary-button {
+  background: #d9cfb0;
+  color: #2d291d;
+}
+
+.side-panel,
+.city-stage {
+  border-color: rgba(220, 202, 150, 0.26);
+  background:
+    linear-gradient(180deg, rgba(242, 236, 214, 0.97), rgba(214, 205, 176, 0.94)),
+    #e1d7bd;
+  box-shadow: var(--shadow);
+}
+
+.capital-summary,
+.stat-grid > div,
+.rule-chip,
+.search-result,
+.asset-card,
+.building-detail,
+.news-section,
+.flow-section,
+.ranking-section,
+.report-section,
+.sector-strip,
+.stage-header,
+.game-hud {
+  border-color: rgba(90, 88, 69, 0.34);
+  background:
+    linear-gradient(180deg, rgba(245, 239, 217, 0.92), rgba(219, 209, 180, 0.9)),
+    #e8dec5;
+}
+
+.eyebrow {
+  color: #527066;
+}
+
+.capital-meter circle:first-child {
+  stroke: rgba(89, 91, 72, 0.24);
+}
+
+.capital-meter circle:last-child {
+  stroke: #6d7d45;
+}
+
+.time-chip {
+  border-color: rgba(95, 88, 61, 0.34);
+  background:
+    linear-gradient(180deg, rgba(241, 233, 205, 0.88), rgba(215, 204, 174, 0.88)),
+    #ded2b6;
+}
+
+.time-chip.is-active {
+  border-color: rgba(177, 112, 48, 0.68);
+  background:
+    linear-gradient(135deg, rgba(207, 139, 58, 0.32), rgba(237, 224, 194, 0.82)),
+    #d9c299;
+}
+
+.city-stage {
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(57, 63, 45, 0.38), transparent 24%),
+    #d6c7a7;
+}
+
+.city-map {
+  background:
+    linear-gradient(115deg, transparent 0 37%, rgba(82, 72, 52, 0.56) 38% 43%, transparent 44% 100%),
+    linear-gradient(35deg, transparent 0 45%, rgba(88, 77, 54, 0.54) 46% 50%, transparent 51% 100%),
+    linear-gradient(90deg, transparent 0 48%, rgba(64, 78, 65, 0.34) 49% 52%, transparent 53%),
+    radial-gradient(ellipse at 50% 55%, rgba(234, 219, 172, 0.34), transparent 37%),
+    radial-gradient(circle at 18% 78%, rgba(62, 83, 72, 0.38), transparent 19%),
+    radial-gradient(circle at 87% 22%, rgba(88, 92, 68, 0.3), transparent 18%),
+    repeating-linear-gradient(30deg, rgba(255, 245, 203, 0.1) 0 2px, transparent 2px 44px),
+    linear-gradient(180deg, #b79f6b 0%, #9b8d5e 47%, #6e7554 100%);
+}
+
+.city-map::before {
+  inset: 14px;
+  border-color: rgba(45, 54, 43, 0.42);
+  background:
+    linear-gradient(90deg, rgba(255, 241, 184, 0.16), transparent 18%, transparent 82%, rgba(24, 32, 26, 0.2)),
+    radial-gradient(ellipse at 52% 53%, transparent 0 37%, rgba(18, 23, 18, 0.22) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 239, 188, 0.18),
+    inset 0 24px 60px rgba(255, 236, 175, 0.08),
+    inset 0 -28px 48px rgba(25, 31, 25, 0.22);
+}
+
+.city-map::after {
+  right: -5%;
+  bottom: 6%;
+  background:
+    linear-gradient(180deg, rgba(255, 243, 189, 0.22), transparent 42%),
+    #5d6f5a;
+  box-shadow: inset 0 -8px 0 rgba(29, 39, 33, 0.28);
+  opacity: 0.72;
+}
+
+body[data-market-session="morning"] {
+  --time-accent: #9b7436;
+  --time-soft: #edd5a2;
+  --map-light: rgba(243, 210, 137, 0.34);
+}
+
+body[data-market-session="noon"] {
+  --time-accent: #536d46;
+  --time-soft: #d6dfbd;
+  --map-light: rgba(216, 223, 192, 0.22);
+}
+
+body[data-market-session="sunset"] {
+  --time-accent: #b05a38;
+  --time-soft: #e8b28c;
+  --map-light: rgba(221, 112, 72, 0.3);
+}
+
+body[data-market-session="sunset"] .city-map {
+  background:
+    linear-gradient(115deg, transparent 0 37%, rgba(82, 55, 42, 0.62) 38% 43%, transparent 44% 100%),
+    linear-gradient(35deg, transparent 0 45%, rgba(88, 59, 43, 0.58) 46% 50%, transparent 51% 100%),
+    radial-gradient(ellipse at 50% 55%, rgba(229, 150, 90, 0.24), transparent 38%),
+    repeating-linear-gradient(30deg, rgba(255, 222, 177, 0.1) 0 2px, transparent 2px 44px),
+    linear-gradient(180deg, #b18963 0%, #8e704f 48%, #626044 100%);
+}
+
+.map-route {
+  background:
+    linear-gradient(180deg, rgba(229, 217, 174, 0.22), transparent 56%),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(40, 46, 38, 0.24) 22px 29px),
+    #6f664d;
+  box-shadow:
+    inset 0 -5px 0 rgba(38, 35, 27, 0.24),
+    0 7px 14px rgba(22, 27, 21, 0.22);
+}
+
+.tile-ground {
+  background:
+    linear-gradient(135deg, rgba(255, 239, 184, 0.22), transparent 48%),
+    repeating-linear-gradient(135deg, rgba(45, 50, 39, 0.13) 0 5px, transparent 5px 18px),
+    #8a805d;
+  box-shadow:
+    0 16px 28px rgba(19, 25, 18, 0.24),
+    inset 0 -10px 0 rgba(45, 49, 35, 0.22);
+}
+
+.lot.is-base .tile-ground {
+  background:
+    linear-gradient(135deg, rgba(255, 231, 165, 0.34), transparent 50%),
+    repeating-linear-gradient(135deg, rgba(71, 65, 42, 0.16) 0 8px, transparent 8px 24px),
+    #a18150;
+  box-shadow:
+    0 20px 34px rgba(31, 25, 14, 0.26),
+    inset 0 -12px 0 rgba(77, 58, 32, 0.22);
+}
+
+.lot {
+  border-color: rgba(40, 49, 36, 0.3);
+  background: rgba(237, 225, 194, 0.3);
+}
+
+.lot:hover,
+.lot.is-selected {
+  border-color: #c08a36;
+  background: rgba(239, 225, 192, 0.64);
+  box-shadow: 0 14px 26px rgba(45, 38, 20, 0.24);
+}
+
+.lot.is-base {
+  background: linear-gradient(135deg, rgba(194, 137, 65, 0.18), rgba(238, 225, 190, 0.48));
+}
+
+.building-chip {
+  border-color: rgba(36, 42, 30, 0.38);
+  background: rgba(239, 231, 205, 0.95);
+  box-shadow:
+    0 8px 18px rgba(18, 21, 14, 0.18),
+    inset 0 0 0 1px rgba(255, 249, 218, 0.36);
+  color: #29291f;
+}
+
+.building-art {
+  filter: drop-shadow(0 13px 9px rgba(17, 22, 15, 0.22));
+}
+
+.building-art path,
+.building-art rect,
+.building-art circle {
+  stroke: #21271e;
+  stroke-width: 2.7;
+}
+
+.building-art text {
+  fill: #1f241d;
+}
+
+.building-art .iso-shadow {
+  fill: rgba(13, 17, 12, 0.26);
+}
+
+.building-art .lot-tile {
+  fill: #8b805b;
+  stroke: rgba(35, 41, 30, 0.42);
+}
+
+.building-art .lot-path {
+  fill: rgba(52, 58, 42, 0.34);
+  stroke: rgba(31, 36, 26, 0.22);
+}
+
+.building-art .sand-bag {
+  fill: #c7aa6b;
+  stroke: #4e452d;
+  stroke-width: 1.9;
+}
+
+.building-art .fence-post,
+.building-art .fence-wire {
+  fill: none;
+  stroke: rgba(37, 43, 32, 0.72);
+  stroke-width: 2.2;
+}
+
+.building-art .plaza-tile {
+  fill: #756b4d;
+  stroke: rgba(34, 38, 27, 0.4);
+}
+
+.building-art .hall-base,
+.building-art .hall-wing,
+.building-art .hall-tower,
+.building-art .command-tower {
+  fill: #7c865e;
+}
+
+.building-art .hall-side,
+.building-art .bank-side,
+.building-art .treasury-side,
+.building-art .tech-side,
+.building-art .factory-side,
+.building-art .steel-side,
+.building-art .bond-tower-side {
+  fill: #515b44;
+}
+
+.building-art .hall-roof,
+.building-art .bank-roof,
+.building-art .treasury-dome,
+.building-art .bond-roof,
+.building-art .plant-roof,
+.building-art .market-roof,
+.building-art .complex-roof,
+.building-art .memory-roof,
+.building-art .bunker-roof {
+  fill: #4d5140;
+}
+
+.building-art .command-core,
+.building-art .coin,
+.building-art .ops-window {
+  fill: #e6c263;
+}
+
+.building-art .radar-dish,
+.building-art .radar-sweep,
+.building-art .command-signal,
+.building-art .comms-mast,
+.building-art .antenna,
+.building-art .server-beacon,
+.building-art .command-link,
+.building-art .market-antenna,
+.building-art .scan-line,
+.building-art .power-grid {
+  fill: none;
+  stroke: #f0c860;
+  stroke-width: 2.5;
+}
+
+.building-art .pillars,
+.building-art .bank-pillars,
+.building-art .bank-steps,
+.building-art .treasury-columns {
+  stroke: #d9c07a;
+}
+
+.building-art .bunker-slit,
+.building-art .hangar-lines,
+.building-art .garage-lines {
+  fill: none;
+  stroke: #25291f;
+  stroke-width: 2.6;
+}
+
+.building-art .vault-door,
+.building-art .main-door,
+.building-art .garage-door,
+.building-art .hangar-door {
+  fill: #3b3b2d;
+}
+
+.building-art .vault-lock {
+  fill: #d7b25c;
+}
+
+.building-art .bond-tower {
+  fill: #b9ad83;
+}
+
+.building-art .bond-tower-side {
+  fill: #746b50;
+}
+
+.building-art .bond-fold,
+.building-art .bond-lines {
+  stroke: #504a35;
+}
+
+.building-art .seal {
+  fill: #9d4b38;
+}
+
+.building-art .ribbon {
+  fill: #7d382e;
+}
+
+.building-art .tech-face {
+  fill: #607c80;
+}
+
+.building-art .tech-side {
+  fill: #3d5657;
+}
+
+.building-art .tech-roof {
+  fill: #9aa18c;
+}
+
+.building-art .tech-core {
+  fill: #2e5554;
+}
+
+.building-art .chip-pins,
+.building-art .circuit,
+.building-art .stack-lines,
+.building-art .pins {
+  stroke: #1f261f;
+}
+
+.building-art .memory {
+  fill: #6d8b83;
+}
+
+.building-art .memory-back {
+  fill: #879f8e;
+}
+
+.building-art .memory-mid {
+  fill: #4b6b6b;
+}
+
+.building-art .memory-front {
+  fill: #789487;
+}
+
+.building-art .factory-roof {
+  fill: #586347;
+}
+
+.building-art .factory-side {
+  fill: #49523d;
+}
+
+.building-art .factory-front {
+  fill: #7d8466;
+}
+
+.building-art .vehicle-line,
+.building-art .arm,
+.building-art .turret,
+.building-art .naval-gun {
+  fill: none;
+  stroke: #2f3427;
+  stroke-width: 4.2;
+}
+
+.building-art .armored-vehicle {
+  fill: #4e6047;
+}
+
+.building-art .wheel {
+  fill: #252821;
+}
+
+.building-art .steel-base {
+  fill: #6d6254;
+}
+
+.building-art .steel-side {
+  fill: #4e4a3f;
+}
+
+.building-art .furnace {
+  fill: #765f4a;
+}
+
+.building-art .chimney {
+  fill: #4f4a3e;
+}
+
+.building-art .chimney.thin {
+  fill: #3f3b32;
+}
+
+.building-art .smoke,
+.building-art .steam {
+  stroke: rgba(220, 218, 198, 0.84);
+}
+
+.building-art .molten {
+  fill: #d88437;
+  stroke: #6d3e24;
+}
+
+.building-art .molten-stream {
+  stroke: #f0b65a;
+}
+
+.building-art .blast-shield {
+  fill: #34372c;
+}
+
+.building-art .water-ground {
+  fill: #536f68;
+}
+
+.building-art .dock {
+  fill: #6c6045;
+}
+
+.building-art .dock-side {
+  fill: #4f4735;
+}
+
+.building-art .ship,
+.building-art .warship {
+  fill: #a8ada3;
+}
+
+.building-art .ship-deck {
+  fill: #5c706e;
+}
+
+.building-art .ship-stripe,
+.building-art .waves {
+  stroke: #dfe9d6;
+}
+
+.building-art .crane,
+.building-art .hook {
+  stroke: #c08a36;
+}
+
+.building-art .cooling {
+  fill: #a7aa99;
+}
+
+.building-art .plant {
+  fill: #8d825c;
+}
+
+.building-art .solar {
+  fill: #526b72;
+}
+
+.building-art .bolt {
+  fill: #f1cd4f;
+}
+
+.building-art .basket {
+  fill: #b0914f;
+}
+
+.building-art .complex-tower.a,
+.building-art .market-block.a {
+  fill: #69784f;
+}
+
+.building-art .complex-tower.b,
+.building-art .market-block.b {
+  fill: #526f70;
+}
+
+.building-art .complex-tower.c,
+.building-art .market-block.c {
+  fill: #606b87;
+}
+
+.building-art .connector,
+.building-art .plaza {
+  stroke: #343d2f;
+}
+
+.deco-tree,
+.deco-hill,
+.deco-farm,
+.deco-cloud {
+  display: none;
+}
+
+.deco-crane {
+  border-color: #5a5138;
+}
+
+.deco-water {
+  background:
+    linear-gradient(180deg, rgba(220, 234, 213, 0.2), transparent 45%),
+    #566f68;
+  opacity: 0.72;
+}
+
+.warzone-radar {
+  position: absolute;
+  left: 8%;
+  top: 19%;
+  z-index: 2;
+  width: 70px;
+  height: 70px;
+  border: 3px solid rgba(230, 194, 99, 0.8);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 16px rgba(230, 194, 99, 0.08),
+    0 10px 18px rgba(19, 24, 18, 0.22);
+}
+
+.warzone-radar::before,
+.warzone-radar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(230, 194, 99, 0.78);
+  transform-origin: left center;
+}
+
+.warzone-radar::before {
+  width: 31px;
+  height: 3px;
+  transform: rotate(-28deg);
+}
+
+.warzone-radar::after {
+  width: 3px;
+  height: 58px;
+  transform: translate(-1px, -29px);
+}
+
+.warzone-helipad {
+  position: absolute;
+  right: 10%;
+  bottom: 19%;
+  z-index: 2;
+  width: 84px;
+  height: 60px;
+  transform: skewX(-18deg) rotate(-7deg);
+  border: 3px solid rgba(235, 225, 194, 0.72);
+  border-radius: 14px;
+  background:
+    linear-gradient(90deg, transparent 45%, rgba(235, 225, 194, 0.64) 45% 55%, transparent 55%),
+    linear-gradient(0deg, transparent 42%, rgba(235, 225, 194, 0.64) 42% 58%, transparent 58%),
+    rgba(58, 70, 52, 0.56);
+  box-shadow: 0 12px 22px rgba(16, 21, 14, 0.22);
+}
+
+.warzone-convoy {
+  position: absolute;
+  left: 44%;
+  top: 32%;
+  z-index: 4;
+  width: 88px;
+  height: 18px;
+  transform: rotate(37deg);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, #3e4d38 0 18px, transparent 18px 28px, #546342 28px 46px, transparent 46px 58px, #3e4d38 58px 78px);
+  box-shadow:
+    0 5px 0 rgba(23, 28, 20, 0.18),
+    inset 0 -4px 0 rgba(19, 24, 18, 0.24);
+}
+
+.warzone-warning {
+  position: absolute;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  transform: rotate(45deg);
+  border: 3px solid rgba(231, 189, 81, 0.82);
+  border-radius: 3px;
+  background: rgba(84, 66, 39, 0.42);
+  box-shadow: 0 8px 16px rgba(18, 22, 16, 0.2);
+}
+
+.warzone-warning::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 2px;
+  background: rgba(231, 189, 81, 0.66);
+}
+
+.warning-a {
+  left: 32%;
+  top: 55%;
+}
+
+.warning-b {
+  right: 28%;
+  top: 66%;
+}
+
+.sector-card {
+  background:
+    linear-gradient(180deg, rgba(245, 239, 217, 0.92), rgba(221, 210, 180, 0.92)),
+    #e8dec5;
+  border-color: rgba(66, 65, 48, 0.3);
+}
+
+.sector-card strong,
+.is-positive,
+#dailyPnl.is-positive {
+  color: #4d6f38;
+}
+
+.sector-card.is-negative strong,
+.is-negative,
+#dailyPnl.is-negative {
+  color: #a74736;
+}

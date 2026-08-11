@@ -973,10 +973,10 @@ function renderLotDetails() {
     <ellipse class="iso-shadow" cx="90" cy="129" rx="58" ry="13" />
     <path class="lot-tile" d="M19 118 L90 83 L161 118 L90 146 Z" />
     <path class="lot-path" d="M78 133 L90 115 L102 133 L90 144 Z" />
-    <rect class="tree-trunk" x="32" y="107" width="5" height="13" rx="2" />
-    <circle class="tree-crown" cx="34" cy="103" r="9" />
-    <rect class="tree-trunk" x="145" y="107" width="5" height="13" rx="2" />
-    <circle class="tree-crown" cx="147" cy="103" r="8" />
+    <path class="sand-bag" d="M27 110 C34 105 44 105 51 110 V119 H27 Z" />
+    <path class="sand-bag" d="M130 111 C137 106 147 106 154 111 V120 H130 Z" />
+    <path class="fence-post" d="M37 98 V121 M143 98 V121" />
+    <path class="fence-wire" d="M30 104 L50 111 M130 111 L151 104" />
   `;
 }
 
@@ -988,21 +988,22 @@ function renderBuildingArt(visual, ticker = "") {
     return `
       <svg ${common}>
         ${renderLotDetails()}
-        <path class="plaza-tile" d="M45 112 H135 L122 127 H58 Z" />
-        <rect class="hall-wing" x="35" y="76" width="36" height="40" rx="3" />
-        <rect class="hall-wing" x="109" y="76" width="36" height="40" rx="3" />
-        <rect class="hall-base" x="57" y="62" width="66" height="56" rx="3" />
-        <path class="hall-side" d="M123 62 L139 72 V116 H123 Z" />
-        <path class="hall-roof" d="M31 75 L49 58 H132 L149 75 Z" />
-        <rect class="hall-tower" x="78" y="38" width="24" height="80" rx="3" />
-        <path class="hall-roof" d="M73 39 L90 23 L107 39 Z" />
-        <circle class="clock" cx="90" cy="56" r="8" />
-        <path class="clock-hand" d="M90 56 V51 M90 56 H95" />
-        <path class="flag-pole" d="M102 37 V17" />
-        <path class="flag" d="M104 18 H133 L126 30 H104 Z" />
-        <path class="pillars" d="M66 78 V112 M78 72 V112 M102 72 V112 M114 78 V112" />
-        ${renderWindowGrid(42, 87, 2, 2, { width: 7, height: 8, gapX: 10, gapY: 9, className: "warm-window" })}
-        ${renderWindowGrid(117, 87, 2, 2, { width: 7, height: 8, gapX: 10, gapY: 9, className: "warm-window" })}
+        <path class="plaza-tile" d="M42 110 H138 L123 128 H57 Z" />
+        <rect class="hall-wing" x="35" y="77" width="38" height="40" rx="3" />
+        <rect class="hall-wing" x="107" y="77" width="38" height="40" rx="3" />
+        <rect class="hall-base" x="55" y="61" width="70" height="58" rx="3" />
+        <path class="hall-side" d="M125 61 L142 72 V118 H125 Z" />
+        <path class="hall-roof" d="M33 76 L51 58 H129 L148 76 Z" />
+        <rect class="command-tower" x="76" y="35" width="28" height="84" rx="3" />
+        <path class="radar-dish" d="M77 38 C82 24 98 24 103 38" />
+        <path class="radar-sweep" d="M90 36 V17 M90 17 L108 25 M90 17 L72 25" />
+        <circle class="command-core" cx="90" cy="58" r="9" />
+        <path class="command-signal" d="M86 58 H94 M90 54 V62" />
+        <path class="flag-pole" d="M104 37 V17" />
+        <path class="flag" d="M106 18 H135 L128 30 H106 Z" />
+        <path class="pillars" d="M65 81 V112 M78 74 V112 M102 74 V112 M115 81 V112" />
+        ${renderWindowGrid(42, 88, 2, 2, { width: 7, height: 8, gapX: 10, gapY: 9, className: "ops-window" })}
+        ${renderWindowGrid(117, 88, 2, 2, { width: 7, height: 8, gapX: 10, gapY: 9, className: "ops-window" })}
       </svg>
     `;
   }
@@ -1011,14 +1012,14 @@ function renderBuildingArt(visual, ticker = "") {
     return `
       <svg ${common}>
         ${renderLotDetails()}
-        <path class="bank-roof" d="M39 66 L90 36 L141 66 Z" />
-        <rect class="bank-base" x="42" y="66" width="96" height="55" rx="3" />
-        <path class="bank-side" d="M138 66 L153 76 V119 H138 Z" />
-        <circle class="coin" cx="90" cy="54" r="9" />
-        <path class="bank-pillars" d="M58 76 V112 M78 76 V112 M102 76 V112 M122 76 V112" />
-        <rect class="main-door" x="83" y="91" width="15" height="28" rx="3" />
-        <path class="bank-steps" d="M35 121 H145 M45 128 H135 M57 134 H123" />
-        ${renderWindowGrid(51, 78, 2, 2, { width: 8, height: 8, gapX: 55, gapY: 11, className: "warm-window" })}
+        <path class="bunker-roof" d="M42 72 L59 52 H126 L144 72 Z" />
+        <rect class="bank-base" x="42" y="72" width="98" height="48" rx="4" />
+        <path class="bank-side" d="M140 72 L154 82 V120 H140 Z" />
+        <circle class="coin" cx="91" cy="59" r="8" />
+        <path class="bunker-slit" d="M55 86 H78 M102 86 H126 M55 101 H126" />
+        <rect class="vault-door" x="79" y="93" width="24" height="27" rx="4" />
+        <circle class="vault-lock" cx="91" cy="106" r="5" />
+        <path class="bank-steps" d="M36 121 H145 M46 128 H135 M58 134 H123" />
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1028,14 +1029,15 @@ function renderBuildingArt(visual, ticker = "") {
     return `
       <svg ${common}>
         ${renderLotDetails()}
-        <rect class="bond-tower-side" x="106" y="51" width="31" height="70" rx="3" />
-        <rect class="bond-tower" x="48" y="48" width="63" height="73" rx="4" />
-        <path class="bond-roof" d="M48 48 L65 34 H128 L111 48 Z" />
-        <path class="bond-fold" d="M94 48 V67 H111" />
-        <path class="bond-lines" d="M61 73 H92 M61 88 H98 M61 103 H88" />
-        <circle class="seal" cx="114" cy="92" r="12" />
-        <path class="ribbon" d="M110 103 L105 122 L115 115 L126 122 L120 103" />
-        ${renderWindowGrid(115, 64, 2, 4, { width: 7, height: 7, gapX: 7, gapY: 7, className: "warm-window" })}
+        <rect class="bond-tower-side" x="110" y="52" width="29" height="69" rx="3" />
+        <rect class="bond-tower" x="48" y="54" width="66" height="67" rx="4" />
+        <path class="bond-roof" d="M48 54 L66 39 H130 L114 54 Z" />
+        <path class="comms-mast" d="M125 51 V25 M116 33 L125 25 L135 33" />
+        <path class="bond-fold" d="M95 55 V72 H113" />
+        <path class="bond-lines" d="M61 78 H92 M61 92 H99 M61 106 H88" />
+        <circle class="seal" cx="116" cy="96" r="11" />
+        <path class="ribbon" d="M112 106 L107 122 L117 116 L127 122 L121 106" />
+        ${renderWindowGrid(118, 65, 2, 3, { width: 7, height: 7, gapX: 6, gapY: 8, className: "ops-window" })}
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1045,13 +1047,13 @@ function renderBuildingArt(visual, ticker = "") {
     return `
       <svg ${common}>
         ${renderLotDetails()}
-        <rect class="treasury-base" x="39" y="73" width="102" height="48" rx="3" />
-        <path class="treasury-side" d="M141 73 L155 83 V120 H141 Z" />
-        <path class="treasury-dome" d="M52 73 C58 49 122 49 128 73 Z" />
-        <path class="dome-ribs" d="M66 71 C70 58 80 52 90 52 M114 71 C110 58 100 52 90 52" />
-        <path class="treasury-columns" d="M56 80 V113 M73 80 V113 M90 80 V113 M107 80 V113 M124 80 V113" />
-        <path class="flag-pole" d="M90 49 V27" />
-        <path class="flag" d="M92 29 H122 L114 41 H92 Z" />
+        <rect class="treasury-base" x="39" y="76" width="102" height="45" rx="3" />
+        <path class="treasury-side" d="M141 76 L155 85 V120 H141 Z" />
+        <path class="treasury-dome" d="M51 76 C57 51 123 51 129 76 Z" />
+        <path class="dome-ribs" d="M66 73 C70 60 80 54 90 54 M114 73 C110 60 100 54 90 54" />
+        <path class="treasury-columns" d="M56 82 V114 M73 82 V114 M90 82 V114 M107 82 V114 M124 82 V114" />
+        <path class="radar-dish" d="M74 52 C80 39 100 39 106 52" />
+        <path class="radar-sweep" d="M90 51 V28 M90 28 L107 37 M90 28 L73 37" />
         <path class="bank-steps" d="M34 121 H146 M45 130 H135" />
         ${renderTickerPlate(label)}
       </svg>
@@ -1069,8 +1071,9 @@ function renderBuildingArt(visual, ticker = "") {
         <path class="chip-pins" d="M70 77 H59 M70 86 H56 M70 95 H59 M104 77 H116 M104 86 H119 M104 95 H116 M78 70 V59 M87 70 V56 M96 70 V59 M78 101 V112 M87 101 V115 M96 101 V112" />
         <path class="circuit" d="M77 81 H87 V76 H98 M77 91 H92 V97 H101" />
         <path class="antenna" d="M132 50 V27 M124 35 L132 27 L140 35" />
-        ${renderWindowGrid(54, 62, 2, 4, { width: 7, height: 7, gapX: 47, gapY: 8, className: "blue-window" })}
-        ${renderWindowGrid(126, 64, 1, 5, { width: 8, height: 6, gapY: 6, className: "blue-window" })}
+        <path class="scan-line" d="M49 66 H122 M49 108 H122" />
+        ${renderWindowGrid(54, 62, 2, 4, { width: 7, height: 7, gapX: 47, gapY: 8, className: "ops-window" })}
+        ${renderWindowGrid(126, 64, 1, 5, { width: 8, height: 6, gapY: 6, className: "ops-window" })}
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1085,6 +1088,7 @@ function renderBuildingArt(visual, ticker = "") {
         <rect class="memory memory-front" x="106" y="50" width="32" height="71" rx="4" />
         <path class="memory-roof" d="M42 57 L53 47 H84 L73 57 Z M72 38 L84 27 H120 L108 38 Z M106 50 L117 40 H149 L138 50 Z" />
         <path class="stack-lines" d="M48 70 H68 M48 84 H68 M48 98 H68 M48 112 H68 M78 53 H102 M78 67 H102 M78 81 H102 M78 95 H102 M78 109 H102 M112 63 H132 M112 77 H132 M112 91 H132 M112 105 H132" />
+        <path class="server-beacon" d="M90 36 V20 M81 26 L90 20 L99 26" />
         <path class="pins" d="M36 127 H144 M49 127 V138 M67 127 V138 M85 127 V138 M103 127 V138 M121 127 V138 M139 127 V138" />
         ${renderTickerPlate(label)}
       </svg>
@@ -1095,17 +1099,18 @@ function renderBuildingArt(visual, ticker = "") {
     return `
       <svg ${common}>
         ${renderLotDetails()}
-        <path class="factory-side" d="M126 77 L146 87 V120 H126 Z" />
-        <path class="factory-roof" d="M34 76 H54 L54 57 L76 76 H91 L91 57 L114 76 H142 V89 L126 80 H34 Z" />
-        <rect class="factory-front" x="38" y="80" width="90" height="42" rx="4" />
-        <rect class="garage-door" x="67" y="96" width="28" height="26" rx="2" />
-        <path class="garage-lines" d="M67 104 H95 M67 112 H95" />
-        <path class="conveyor" d="M42 126 H139" />
-        <circle class="wheel" cx="59" cy="126" r="5" />
-        <circle class="wheel" cx="122" cy="126" r="5" />
-        <path class="arm" d="M123 69 L145 53 L153 61 L136 82" />
-        <path class="robot-claw" d="M136 82 L148 89 M136 82 L142 96" />
-        ${renderWindowGrid(45, 91, 2, 2, { width: 10, height: 8, gapX: 55, gapY: 9, className: "warm-window" })}
+        <path class="factory-side" d="M128 76 L149 88 V121 H128 Z" />
+        <path class="factory-roof" d="M33 77 H55 L55 59 L76 77 H93 L93 59 L116 77 H145 V90 L128 80 H33 Z" />
+        <rect class="factory-front" x="38" y="81" width="92" height="41" rx="4" />
+        <rect class="hangar-door" x="66" y="93" width="33" height="29" rx="2" />
+        <path class="hangar-lines" d="M66 102 H99 M66 111 H99" />
+        <path class="vehicle-line" d="M42 127 H140" />
+        <rect class="armored-vehicle" x="43" y="113" width="36" height="15" rx="4" />
+        <circle class="wheel" cx="54" cy="128" r="5" />
+        <circle class="wheel" cx="70" cy="128" r="5" />
+        <path class="turret" d="M57 113 L80 102" />
+        <path class="arm" d="M124 68 L145 53 L153 61 L136 82" />
+        ${renderWindowGrid(44, 91, 2, 2, { width: 9, height: 7, gapX: 58, gapY: 9, className: "ops-window" })}
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1124,6 +1129,7 @@ function renderBuildingArt(visual, ticker = "") {
         <path class="girder" d="M44 78 L129 122 M129 78 L44 122 M48 88 H124 M51 106 H128" />
         <path class="molten" d="M72 96 C82 90 94 100 105 94 V119 H72 Z" />
         <path class="molten-stream" d="M86 53 C92 68 81 78 88 92" />
+        <path class="blast-shield" d="M59 123 H118 L110 132 H67 Z" />
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1136,10 +1142,11 @@ function renderBuildingArt(visual, ticker = "") {
         <path class="water-ground" d="M18 120 L90 84 L162 120 L91 146 Z" />
         <path class="dock" d="M32 103 H149 L136 132 H47 Z" />
         <path class="dock-side" d="M47 132 H136 L129 139 H55 Z" />
-        <path class="ship" d="M44 92 H129 L114 121 H62 Z" />
+        <path class="ship warship" d="M44 92 H129 L114 121 H62 Z" />
         <path class="ship-stripe" d="M55 103 H120" />
         <path class="ship-deck" d="M68 76 H105 L117 92 H56 Z" />
-        ${renderWindowGrid(72, 84, 4, 1, { width: 7, height: 6, gapX: 5, className: "blue-window" })}
+        <path class="naval-gun" d="M96 76 L126 64" />
+        ${renderWindowGrid(72, 84, 4, 1, { width: 7, height: 6, gapX: 5, className: "ops-window" })}
         <path class="crane" d="M41 35 V106 M41 39 H127 M99 39 V82 M127 39 L113 52" />
         <path class="hook" d="M99 82 V94 C99 101 110 101 110 94" />
         <path class="waves" d="M35 136 C47 129 59 142 71 136 C83 129 95 142 107 136 C119 129 131 142 143 136" />
@@ -1158,7 +1165,8 @@ function renderBuildingArt(visual, ticker = "") {
         <path class="solar" d="M27 98 L76 82 L99 96 L50 115 Z M41 102 L88 88 M56 94 L78 109" />
         <path class="bolt" d="M82 42 L65 76 H80 L69 104 L101 63 H84 Z" />
         <path class="steam" d="M119 36 C110 27 120 18 132 25 M136 35 C127 27 139 17 148 25" />
-        ${renderWindowGrid(50, 88, 3, 2, { width: 8, height: 7, gapX: 7, gapY: 8, className: "warm-window" })}
+        <path class="power-grid" d="M35 72 V120 M27 84 H43 M30 96 H40" />
+        ${renderWindowGrid(50, 88, 3, 2, { width: 8, height: 7, gapX: 7, gapY: 8, className: "ops-window" })}
         ${renderTickerPlate(label)}
       </svg>
     `;
@@ -1173,9 +1181,10 @@ function renderBuildingArt(visual, ticker = "") {
         <rect class="complex-tower b" x="75" y="44" width="34" height="69" rx="4" />
         <rect class="complex-tower c" x="109" y="67" width="28" height="46" rx="4" />
         <path class="complex-roof" d="M45 64 L56 54 H86 L75 64 Z M75 44 L87 33 H121 L109 44 Z M109 67 L119 57 H147 L137 67 Z" />
-        ${renderWindowGrid(53, 75, 2, 3, { width: 6, height: 6, gapX: 6, gapY: 7, className: "warm-window" })}
-        ${renderWindowGrid(83, 57, 2, 4, { width: 7, height: 6, gapX: 7, gapY: 7, className: "blue-window" })}
-        ${renderWindowGrid(116, 79, 2, 2, { width: 6, height: 6, gapX: 6, gapY: 8, className: "green-window" })}
+        ${renderWindowGrid(53, 75, 2, 3, { width: 6, height: 6, gapX: 6, gapY: 7, className: "ops-window" })}
+        ${renderWindowGrid(83, 57, 2, 4, { width: 7, height: 6, gapX: 7, gapY: 7, className: "ops-window" })}
+        ${renderWindowGrid(116, 79, 2, 2, { width: 6, height: 6, gapX: 6, gapY: 8, className: "ops-window" })}
+        <path class="command-link" d="M90 43 V27 M80 33 L90 27 L100 33" />
         <path class="connector" d="M54 127 H128 M63 85 C77 74 104 74 118 85" />
         ${renderTickerPlate(label)}
       </svg>
@@ -1189,9 +1198,10 @@ function renderBuildingArt(visual, ticker = "") {
       <rect class="market-block b" x="77" y="47" width="38" height="77" rx="4" />
       <rect class="market-block c" x="117" y="64" width="29" height="60" rx="4" />
       <path class="market-roof" d="M42 74 L54 63 H87 L75 74 Z M77 47 L90 35 H128 L115 47 Z M117 64 L127 54 H156 L146 64 Z" />
-      ${renderWindowGrid(50, 86, 2, 3, { width: 6, height: 6, gapX: 6, gapY: 8, className: "green-window" })}
-      ${renderWindowGrid(86, 60, 3, 4, { width: 6, height: 6, gapX: 5, gapY: 8, className: "blue-window" })}
-      ${renderWindowGrid(124, 78, 2, 3, { width: 6, height: 6, gapX: 5, gapY: 8, className: "warm-window" })}
+      ${renderWindowGrid(50, 86, 2, 3, { width: 6, height: 6, gapX: 6, gapY: 8, className: "ops-window" })}
+      ${renderWindowGrid(86, 60, 3, 4, { width: 6, height: 6, gapX: 5, gapY: 8, className: "ops-window" })}
+      ${renderWindowGrid(124, 78, 2, 3, { width: 6, height: 6, gapX: 5, gapY: 8, className: "ops-window" })}
+      <path class="market-antenna" d="M115 47 V28 M107 35 L115 28 L123 35" />
       <path class="plaza" d="M49 132 H133 M64 132 C71 119 109 119 116 132" />
       ${renderTickerPlate(label)}
     </svg>
@@ -1212,9 +1222,9 @@ function render() {
 
   document.body.dataset.marketSession = session.key;
   els.marketName.textContent = `${session.time} · ${scenario.name}`;
-  els.marketPulse.textContent = `${session.label} · 도시 생산성 ${percent((pnl / SEED_MONEY) * 100)}`;
-  els.cityLevel.textContent = operating >= 10500 ? "시청 Lv.3" : operating >= 10000 ? "시청 Lv.2" : "시청 Lv.1";
-  els.cityStatus.textContent = ruleValid ? (pnl >= 0 ? "운영 자금 증가" : "방어 운영 중") : "스쿼드 규칙 확인";
+  els.marketPulse.textContent = `${session.label} · 작전 효율 ${percent((pnl / SEED_MONEY) * 100)}`;
+  els.cityLevel.textContent = operating >= 10500 ? "지휘본부 Lv.3" : operating >= 10000 ? "지휘본부 Lv.2" : "지휘본부 Lv.1";
+  els.cityStatus.textContent = ruleValid ? (pnl >= 0 ? "작전 자금 증가" : "방어 태세 유지") : "스쿼드 규칙 확인";
   els.seedMoney.textContent = money(SEED_MONEY);
   els.investedMoney.textContent = money(marketInvested);
   els.cashMoney.textContent = money(reserve);
@@ -1366,12 +1376,12 @@ function renderAssets() {
 function renderCity() {
   const selectedAssets = getSelectedAssets();
   const cityHall = `
-    <div class="lot is-base" aria-label="시청">
+    <div class="lot is-base" aria-label="지휘본부">
       <span class="tile-ground"></span>
       <div class="building illustration city-hall visual-cityhall">
         <span class="sprite-shadow"></span>
         ${renderBuildingArt("cityhall")}
-        <span class="building-chip"><i data-lucide="landmark" aria-hidden="true"></i>시청</span>
+        <span class="building-chip"><i data-lucide="radio-tower" aria-hidden="true"></i>지휘본부</span>
       </div>
     </div>
   `;
@@ -1416,6 +1426,11 @@ function renderCity() {
     <span class="map-deco deco-water" aria-hidden="true"></span>
     <span class="map-deco deco-cloud deco-cloud-1" aria-hidden="true"></span>
     <span class="map-deco deco-cloud deco-cloud-2" aria-hidden="true"></span>
+    <span class="map-deco warzone-radar" aria-hidden="true"></span>
+    <span class="map-deco warzone-helipad" aria-hidden="true"></span>
+    <span class="map-deco warzone-convoy" aria-hidden="true"></span>
+    <span class="map-deco warzone-warning warning-a" aria-hidden="true"></span>
+    <span class="map-deco warzone-warning warning-b" aria-hidden="true"></span>
   `;
 
   els.cityMap.innerHTML = cityHall + lots + mapDecorations;
