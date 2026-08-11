@@ -15,6 +15,6 @@ AI study outputs portal with Supabase authentication.
 
 ## 2026-08-11 Portfolio City Seoul Reference
 
-- Collected 100 Seoul aerial, high-angle, panorama, skyline, and Han River reference images from Wikimedia Commons public-license metadata.
-- Added `portfolio-city/seoul-reference/` with an image board, CSV metadata, JSON metadata, source links, authors, and license information.
-- Excluded aircraft event photos, non-Seoul satellite images, KOCIS/government Flickr restriction text entries, and unrelated indoor/detail shots during selection.
+- Rebuilt the Seoul reference board with 100 images dated 2020 or later from Wikimedia Commons public-license metadata.
+- Added visible year/date fields to the image board and a `year` column to the CSV metadata.
+- Excluded pre-2020 titles/descriptions, aircraft event photos, non-Seoul satellite images, KOCIS/government Flickr restriction text entries, and unrelated indoor/detail shots during selection.

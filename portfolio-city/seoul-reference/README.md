@@ -1,6 +1,6 @@
 # Seoul Aerial Reference Board
 
-Wikimedia Commons 공개 라이선스 메타데이터를 기준으로 서울 항공뷰, 고지대 전경, 파노라마, 스카이라인, 한강 축 레퍼런스 100장을 선별했습니다.
+Wikimedia Commons 공개 라이선스 메타데이터를 기준으로 2020년 이후 서울 항공뷰, 고지대 전경, 파노라마, 스카이라인, 한강 축 레퍼런스 100장을 선별했습니다.
 
 - Board: ./index.html
 - Metadata JSON: ./seoul-aerial-references.json

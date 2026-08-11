@@ -4,6 +4,7 @@ import path from "node:path";
 const endpoint = "https://commons.wikimedia.org/w/api.php";
 const outputDir = path.resolve("portfolio-city", "seoul-reference");
 const limit = 100;
+const minReferenceYear = 2020;
 
 const searches = [
   "Seoul aerial view filetype:bitmap",
@@ -145,6 +146,43 @@ function getMeta(imageInfo, key) {
   return stripHtml(imageInfo?.extmetadata?.[key]?.value || "");
 }
 
+function extractReferenceYear(...values) {
+  for (const value of values) {
+    const text = stripHtml(value || "");
+    if (!text) continue;
+    const years = [...text.matchAll(/\b(20[2-9]\d|19\d{2}|18\d{2}|17\d{2})\b/g)].map((match) => Number(match[1]));
+    if (years.length) return Math.min(...years);
+  }
+  return null;
+}
+
+function hasPre2020Year(value) {
+  const text = stripHtml(value || "");
+  const years = [...text.matchAll(/\b(17\d{2}|18\d{2}|19\d{2}|200\d|201\d)\b/g)].map((match) => Number(match[1]));
+  return years.length > 0;
+}
+
+function getReferenceDate(imageInfo) {
+  const original = getMeta(imageInfo, "DateTimeOriginal");
+  const dateTime = getMeta(imageInfo, "DateTime");
+  const timestamp = imageInfo?.timestamp || "";
+  const explicitDates = [original, dateTime].filter(Boolean);
+  for (const value of explicitDates) {
+    const year = extractReferenceYear(value);
+    if (year) {
+      return {
+        value,
+        year,
+      };
+    }
+  }
+  const year = extractReferenceYear(timestamp);
+  return {
+    value: timestamp,
+    year,
+  };
+}
+
 function isAllowedLicense(imageInfo) {
   const license = `${getMeta(imageInfo, "LicenseShortName")} ${getMeta(imageInfo, "UsageTerms")} ${getMeta(imageInfo, "LicenseUrl")}`.toLowerCase();
   return allowedLicenseTerms.some((term) => license.includes(term));
@@ -153,6 +191,9 @@ function isAllowedLicense(imageInfo) {
 function isRelevant(page, imageInfo) {
   const text = `${page.title} ${getMeta(imageInfo, "ImageDescription")} ${getMeta(imageInfo, "ObjectName")}`.toLowerCase();
   if (excludedTerms.some((term) => text.includes(term))) return false;
+  if (hasPre2020Year(text)) return false;
+  const referenceDate = getReferenceDate(imageInfo);
+  if (!referenceDate.year || referenceDate.year < minReferenceYear) return false;
   return relevanceTerms.some((term) => text.includes(term));
 }
 
@@ -221,7 +262,7 @@ async function searchPages(search) {
     gsrsearch: search,
     gsrlimit: "50",
     prop: "imageinfo",
-    iiprop: "url|size|mime|extmetadata",
+    iiprop: "url|size|mime|timestamp|extmetadata",
     iiurlwidth: "640",
   });
 }
@@ -235,7 +276,7 @@ async function categoryPages(category) {
     gcmnamespace: "6",
     gcmlimit: "50",
     prop: "imageinfo",
-    iiprop: "url|size|mime|extmetadata",
+    iiprop: "url|size|mime|timestamp|extmetadata",
     iiurlwidth: "640",
   });
 }
@@ -249,6 +290,7 @@ function normalizePage(page, source) {
 
   const title = page.title;
   const description = getMeta(imageInfo, "ImageDescription");
+  const referenceDate = getReferenceDate(imageInfo);
   return {
     title,
     name: getMeta(imageInfo, "ObjectName") || titleToName(title),
@@ -264,7 +306,8 @@ function normalizePage(page, source) {
     credit: getMeta(imageInfo, "Credit"),
     license: getMeta(imageInfo, "LicenseShortName") || getMeta(imageInfo, "UsageTerms"),
     licenseUrl: getMeta(imageInfo, "LicenseUrl"),
-    date: getMeta(imageInfo, "DateTimeOriginal") || getMeta(imageInfo, "DateTime"),
+    date: referenceDate.value,
+    year: referenceDate.year,
     source,
   };
 }
@@ -284,6 +327,8 @@ function buildHtml(items) {
           <h2>${escapeHtml(item.name)}</h2>
           <p>${escapeHtml(item.description || "서울 항공/전경 레퍼런스")}</p>
           <dl>
+            <div><dt>연도</dt><dd>${item.year}</dd></div>
+            <div><dt>날짜</dt><dd>${escapeHtml(item.date)}</dd></div>
             <div><dt>크기</dt><dd>${item.width}x${item.height}</dd></div>
             <div><dt>라이선스</dt><dd>${escapeHtml(item.license)}</dd></div>
             <div><dt>작가</dt><dd>${escapeHtml(item.artist)}</dd></div>
@@ -503,12 +548,12 @@ function buildHtml(items) {
         <p class="eyebrow">SEOUL AERIAL REFERENCE</p>
         <h1>서울 항공/전경 레퍼런스 100</h1>
       </div>
-      <div class="summary">Wikimedia Commons 공개 라이선스 기준</div>
+      <div class="summary">2020년 이후 Wikimedia Commons 기준</div>
     </header>
     <main>
       <section class="note" aria-label="수집 기준">
         <div><strong>목적</strong><span>Portfolio City의 서울형 지도, 한강 축, 도심 밀도, 산지 배치를 다시 잡기 위한 시각 자료입니다.</span></div>
-        <div><strong>범위</strong><span>항공뷰를 우선하고, 부족한 부분은 고지대 파노라마와 도시 전경으로 보완했습니다.</span></div>
+        <div><strong>범위</strong><span>2020년 이후 날짜가 확인되는 사진만 선별하고, 항공뷰 부족분은 고지대 파노라마와 도시 전경으로 보완했습니다.</span></div>
         <div><strong>사용</strong><span>이미지는 참고용 보드입니다. 원본 사용 시 각 카드의 Commons 라이선스와 작가 표기를 확인하세요.</span></div>
         <div><strong>출처</strong><span>각 카드의 Commons/Original 링크에서 파일 페이지와 원본 이미지를 확인할 수 있습니다.</span></div>
       </section>
@@ -581,6 +626,7 @@ async function main() {
     "title",
     "width",
     "height",
+    "year",
     "commonsUrl",
     "originalUrl",
     "thumbUrl",
@@ -599,7 +645,7 @@ async function main() {
 
   const readme = `# Seoul Aerial Reference Board
 
-Wikimedia Commons 공개 라이선스 메타데이터를 기준으로 서울 항공뷰, 고지대 전경, 파노라마, 스카이라인, 한강 축 레퍼런스 ${selected.length}장을 선별했습니다.
+Wikimedia Commons 공개 라이선스 메타데이터를 기준으로 2020년 이후 서울 항공뷰, 고지대 전경, 파노라마, 스카이라인, 한강 축 레퍼런스 ${selected.length}장을 선별했습니다.
 
 - Board: ./index.html
 - Metadata JSON: ./seoul-aerial-references.json
