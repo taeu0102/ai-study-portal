@@ -3153,7 +3153,7 @@ body[data-market-session="sunset"] .building.illustration {
   isolation: isolate;
   background:
     linear-gradient(180deg, rgba(255, 253, 244, 0.08), rgba(38, 67, 48, 0.15)),
-    url("./images/seoul-game-map-bg-v1.webp") center / cover no-repeat;
+    url("./images/seoul-game-map-bg-v2.webp") center / cover no-repeat;
 }
 
 .city-map::before {
@@ -3603,89 +3603,100 @@ body[data-market-session="sunset"] .building.illustration {
     brightness(0.9);
 }
 
-/* Seoul map land-lot and stock-label pass */
+/* Wide Seoul redevelopment-site pass */
 .lot.is-base {
-  --x: 51%;
-  --y: 64%;
+  --x: 49%;
+  --y: 68%;
 }
 
 .slot-pos-1 {
-  --x: 66%;
-  --y: 20%;
+  --x: 61%;
+  --y: 23%;
   --rot: -4deg;
 }
 
 .slot-pos-2 {
-  --x: 78%;
-  --y: 21%;
+  --x: 74%;
+  --y: 23%;
   --rot: 3deg;
 }
 
 .slot-pos-3 {
-  --x: 88%;
-  --y: 23%;
+  --x: 20%;
+  --y: 49%;
   --rot: -3deg;
 }
 
 .slot-pos-4 {
-  --x: 28%;
-  --y: 58%;
+  --x: 36%;
+  --y: 49%;
   --rot: 4deg;
 }
 
 .slot-pos-5 {
-  --x: 39%;
-  --y: 61%;
+  --x: 53%;
+  --y: 49%;
   --rot: -5deg;
 }
 
 .slot-pos-6 {
-  --x: 63%;
-  --y: 58%;
+  --x: 70%;
+  --y: 49%;
   --rot: -4deg;
 }
 
 .slot-pos-7 {
-  --x: 19%;
-  --y: 66%;
+  --x: 72%;
+  --y: 64%;
   --rot: 3deg;
 }
 
 .slot-pos-8 {
   --x: 33%;
-  --y: 69%;
+  --y: 64%;
   --rot: -3deg;
 }
 
 .slot-pos-9 {
-  --x: 68%;
-  --y: 68%;
+  --x: 18%;
+  --y: 76%;
   --rot: 4deg;
 }
 
 .slot-pos-10 {
-  --x: 83%;
-  --y: 64%;
+  --x: 92%;
+  --y: 76%;
   --rot: -4deg;
 }
 
+.lot {
+  width: 104px;
+  height: 112px;
+}
+
+.lot.is-base {
+  width: 142px;
+  height: 136px;
+}
+
 .tile-ground {
-  bottom: 9px;
-  width: 132px;
-  height: 72px;
+  bottom: 7px;
+  width: 92px;
+  height: 48px;
   border: 1px solid rgba(54, 72, 49, 0.34);
   background:
     linear-gradient(135deg, rgba(255, 252, 213, 0.44), transparent 42%),
     linear-gradient(180deg, rgba(139, 154, 98, 0.84), rgba(78, 111, 70, 0.9));
   box-shadow:
-    0 15px 22px rgba(15, 31, 24, 0.24),
+    0 9px 15px rgba(15, 31, 24, 0.18),
     inset 0 0 0 2px rgba(241, 231, 177, 0.2),
-    inset 0 -9px 0 rgba(42, 67, 43, 0.16);
+    inset 0 -6px 0 rgba(42, 67, 43, 0.14);
+  opacity: 0.58;
 }
 
 .tile-ground::before {
-  inset: 9px 13px;
-  opacity: 0.72;
+  inset: 7px 10px;
+  opacity: 0.52;
   border: 1px solid rgba(238, 229, 180, 0.24);
   background:
     linear-gradient(90deg, rgba(43, 63, 48, 0.2) 1px, transparent 1px) 0 0 / 16px 16px,
@@ -3696,32 +3707,53 @@ body[data-market-session="sunset"] .building.illustration {
 .tile-ground::after {
   content: "";
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 7px;
-  height: 7px;
+  left: 12px;
+  right: 12px;
+  bottom: 5px;
+  height: 5px;
   border-radius: 999px;
   background: rgba(30, 50, 37, 0.22);
   box-shadow: 0 5px 8px rgba(13, 28, 21, 0.14);
 }
 
 .lot.is-base .tile-ground {
-  bottom: 7px;
-  width: 176px;
-  height: 96px;
+  bottom: 6px;
+  width: 126px;
+  height: 68px;
   background:
     linear-gradient(135deg, rgba(255, 251, 210, 0.5), transparent 44%),
     linear-gradient(180deg, rgba(178, 156, 91, 0.88), rgba(101, 88, 58, 0.9));
 }
 
+.building.illustration,
+.building-art {
+  width: 94px;
+  height: 80px;
+}
+
+.lot.is-base .building.illustration,
+.lot.is-base .building-art {
+  width: 122px;
+  height: 104px;
+}
+
+.sprite-shadow {
+  bottom: 13px;
+  width: 72px;
+  height: 16px;
+}
+
 .building-chip {
-  max-width: 142px;
-  padding-inline: 8px;
-  gap: 5px;
+  bottom: -3px;
+  max-width: 102px;
+  min-height: 20px;
+  padding-inline: 6px;
+  gap: 4px;
+  font-size: 9px;
 }
 
 .lot.is-base .building-chip {
-  max-width: 112px;
+  max-width: 104px;
 }
 
 .building-chip svg {
