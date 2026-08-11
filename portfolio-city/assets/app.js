@@ -1416,6 +1416,13 @@ function renderCity() {
     <span class="map-deco deco-water" aria-hidden="true"></span>
     <span class="map-deco deco-cloud deco-cloud-1" aria-hidden="true"></span>
     <span class="map-deco deco-cloud deco-cloud-2" aria-hidden="true"></span>
+    <span class="map-deco seoul-river" aria-hidden="true"></span>
+    <span class="map-deco seoul-bridge bridge-1" aria-hidden="true"></span>
+    <span class="map-deco seoul-bridge bridge-2" aria-hidden="true"></span>
+    <span class="map-deco seoul-namsan" aria-hidden="true"></span>
+    <span class="map-deco seoul-lotte" aria-hidden="true"></span>
+    <span class="map-deco seoul-mountain mountain-north" aria-hidden="true"></span>
+    <span class="map-deco seoul-mountain mountain-south" aria-hidden="true"></span>
   `;
 
   els.cityMap.innerHTML = cityHall + lots + mapDecorations;

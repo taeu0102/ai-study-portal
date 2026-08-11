@@ -62,10 +62,10 @@ const buildingGroups = [
 ];
 
 const variants = [
-  { id: "A", name: "A. 기본형", note: "작게 배치해도 읽히는 단순 실루엣" },
-  { id: "B", name: "B. 아이소메트릭", note: "측면과 지붕을 분리한 SLG 보드형" },
-  { id: "C", name: "C. 기능 강조", note: "산업별 장치와 상징을 크게 노출" },
-  { id: "D", name: "D. 랜드마크", note: "높은 투자금 단계에서 쓸 수 있는 확장형" },
+  { id: "A", name: "A. 저층 상가형", note: "작은 부지에서도 읽히는 플랫 건물 컬렉션 톤" },
+  { id: "B", name: "B. 코너 빌딩형", note: "측면과 지붕을 분리한 서울 도심 블록형" },
+  { id: "C", name: "C. 복합 시설형", note: "건물 기능과 업종 아이콘을 입면에 크게 노출" },
+  { id: "D", name: "D. 고층 랜드마크형", note: "높은 투자금 단계에서 쓸 수 있는 확장형 타워" },
 ];
 
 function rect(x, y, width, height, className, radius = 4) {
@@ -101,6 +101,7 @@ function baseTile() {
   return `
     <ellipse class="shadow" cx="100" cy="143" rx="66" ry="14" />
     ${path("M24 128 L100 90 L176 128 L100 164 Z", "tile")}
+    ${path("M28 136 C56 123 77 144 103 132 C130 118 147 125 174 112 V126 C148 138 132 132 105 146 C78 159 57 139 29 151 Z", "mini-han-river")}
     ${path("M86 151 L100 127 L114 151 L100 162 Z", "tile-road")}
   `;
 }
@@ -275,17 +276,180 @@ function renderPlatform(variant, group) {
   return commonBuilding(group, variant, `${rect(38, 83, 34, 46, "body")}${rect(75, 48, 50, 81, "body")}${side(75, 48, 50, 81, 18)}${rect(130, 68, 30, 61, "body")}${roof(75, 48, 50, 18, "glass")}${windowGrid(84, 62, 3, 5, { width: 7, height: 5 })}${path("M100 47 V22 M88 31 L100 22 L113 31", "thin")}`);
 }
 
+function storefront(x, y, width) {
+  return `
+    ${rect(x, y, width, 13, "storefront", 2)}
+    ${path(`M${x - 3} ${y} H${x + width + 3} L${x + width - 2} ${y + 9} H${x + 2} Z`, "awning")}
+    ${path(`M${x + 8} ${y + 1} V${y + 10} M${x + 22} ${y + 1} V${y + 10} M${x + width - 22} ${y + 1} V${y + 10} M${x + width - 8} ${y + 1} V${y + 10}`, "awning-line")}
+  `;
+}
+
+function streetDetails(variant) {
+  const lampX = variant.id === "D" ? 45 : 36;
+  return `
+    ${rect(31, 117, 6, 15, "tree-trunk", 2)}
+    ${circle(34, 111, 10, "street-tree")}
+    ${rect(162, 119, 5, 13, "tree-trunk", 2)}
+    ${circle(164, 114, 9, "street-tree")}
+    ${path(`M${lampX} 100 V131 M${lampX - 5} 101 H${lampX + 5}`, "street-lamp")}
+  `;
+}
+
+function referenceShell(variant) {
+  if (variant.id === "A") {
+    return `
+      ${rect(47, 78, 106, 52, "body facade")}
+      ${path("M43 78 L58 62 H145 L158 78 Z", "roof")}
+      ${rect(62, 68, 46, 12, "sign", 3)}
+      ${windowGrid(58, 88, 5, 2, { width: 8, height: 8, gapX: 8, gapY: 10 })}
+      ${storefront(66, 115, 68)}
+    `;
+  }
+
+  if (variant.id === "B") {
+    return `
+      ${rect(50, 68, 86, 62, "body facade")}
+      ${side(50, 68, 86, 62, 20)}
+      ${roof(50, 68, 86, 20)}
+      ${rect(66, 55, 43, 13, "sign", 3)}
+      ${windowGrid(61, 80, 4, 3, { width: 8, height: 7, gapX: 8, gapY: 8 })}
+      ${windowGrid(140, 85, 1, 3, { width: 8, height: 7, gapY: 8 })}
+      ${storefront(67, 116, 57)}
+    `;
+  }
+
+  if (variant.id === "C") {
+    return `
+      ${rect(41, 88, 48, 42, "body facade secondary")}
+      ${rect(88, 60, 72, 70, "body facade")}
+      ${roof(41, 88, 48, 12)}
+      ${roof(88, 60, 72, 16)}
+      ${rect(100, 70, 42, 13, "sign", 3)}
+      ${windowGrid(51, 99, 2, 2, { width: 8, height: 8, gapX: 8, gapY: 9 })}
+      ${windowGrid(100, 88, 4, 3, { width: 8, height: 7, gapX: 7, gapY: 8 })}
+      ${storefront(96, 116, 56)}
+    `;
+  }
+
+  return `
+    ${rect(37, 90, 41, 40, "body facade secondary")}
+    ${rect(78, 45, 55, 85, "body facade tall")}
+    ${side(78, 45, 55, 85, 18)}
+    ${rect(133, 78, 35, 52, "body facade tertiary")}
+    ${roof(37, 90, 41, 12)}
+    ${roof(78, 45, 55, 18)}
+    ${roof(133, 78, 35, 11)}
+    ${rect(91, 56, 29, 13, "sign", 3)}
+    ${windowGrid(49, 100, 2, 2, { width: 7, height: 7, gapX: 7, gapY: 8 })}
+    ${windowGrid(89, 76, 3, 5, { width: 7, height: 6, gapX: 7, gapY: 7 })}
+    ${windowGrid(140, 90, 2, 3, { width: 6, height: 6, gapX: 6, gapY: 8 })}
+  `;
+}
+
+function groupSymbol(group, variant) {
+  switch (group.id) {
+    case "cityhall":
+      return `
+        ${circle(100, variant.id === "D" ? 82 : 93, 9, "clock")}
+        ${path("M100 93 V87 M100 93 H106", "thin")}
+        ${path("M126 50 V30", "thin")}
+        ${path("M128 32 H157 L149 45 H128 Z", "flag")}
+        ${path("M68 108 V129 M82 102 V129 M118 102 V129 M132 108 V129", "columns")}
+      `;
+    case "reserve":
+      return `
+        ${circle(100, variant.id === "D" ? 65 : 74, 10, "coin")}
+        ${rect(86, 101, 28, 29, "vault", 4)}
+        ${circle(100, 116, 7, "coin")}
+        ${path("M59 92 V124 M75 92 V124 M125 92 V124 M141 92 V124", "columns")}
+      `;
+    case "etf":
+      return `
+        ${path("M46 97 C56 126 146 126 156 97 H46 Z", "basket")}
+        ${rect(63, 82, 18, 34, "a", 3)}
+        ${rect(89, 68, 22, 48, "b", 3)}
+        ${rect(119, 86, 18, 30, "c", 3)}
+        ${path("M58 134 C76 118 124 118 142 134", "connector")}
+      `;
+    case "dividend":
+      return `
+        ${path("M51 107 C61 86 139 86 149 107 V130 H51 Z", "glass")}
+        ${circle(78, 114, 10, "coin")}
+        ${circle(122, 114, 10, "coin")}
+        ${circle(101, 99, 13, "street-tree")}
+        ${path("M62 132 C82 119 118 119 138 132", "water")}
+      `;
+    case "semiconductor":
+      return `
+        ${rect(78, 86, 45, 34, "chip", 5)}
+        ${path("M78 95 H62 M78 108 H58 M123 95 H140 M123 108 H144 M91 86 V69 M108 86 V69", "thin")}
+        ${path("M87 99 H99 V93 H114 M87 110 H105 V117 H117", "circuit")}
+        ${path("M136 73 V43 M127 51 L136 43 L146 51", "thin")}
+      `;
+    case "manufacturing":
+      return `
+        ${path("M43 83 H60 L60 66 L80 83 H96 L96 66 L117 83 H151", "factory-saw")}
+        ${rect(75, 101, 36, 29, "bay", 3)}
+        ${rect(45, 119, 34, 13, "vehicle", 4)}
+        ${circle(55, 132, 4, "wheel")}
+        ${circle(71, 132, 4, "wheel")}
+      `;
+    case "heavy":
+      return `
+        ${rect(45, 60, 17, 70, "chimney", 6)}
+        ${rect(133, 48, 21, 82, "chimney", 6)}
+        ${path("M75 58 H113 L124 130 H64 Z", "furnace")}
+        ${path("M82 104 C96 94 111 107 124 98 V130 H82 Z", "molten")}
+        ${path("M45 91 L154 130 M154 91 L45 130", "girder")}
+      `;
+    case "shipyard":
+      return `
+        ${path("M30 120 H170 L154 145 H46 Z", "dock")}
+        ${path("M48 99 H142 L126 128 H62 Z", "ship")}
+        ${path("M68 81 H113 L127 99 H54 Z", "deck")}
+        ${path("M39 38 V123 M39 43 H151 M116 43 V88 M151 43 L135 60", "crane")}
+      `;
+    case "energy":
+      return `
+        ${path("M119 52 H153 C146 79 146 101 158 130 H113 C125 101 125 79 119 52 Z", "tower")}
+        ${path("M31 109 L83 90 L108 107 L55 125 Z M45 112 L94 97 M62 101 L84 118", "solar")}
+        ${path("M79 48 L62 83 H79 L68 114 L104 72 H86 Z", "bolt")}
+      `;
+    case "platform":
+      return `
+        ${path("M101 58 V29 M89 38 L101 29 L114 38", "thin")}
+        ${rect(82, 80, 39, 47, "glass", 4)}
+        ${path("M91 91 H112 M91 102 H112 M91 113 H112", "thin")}
+        ${path("M48 88 V70 M40 78 L48 70 L57 78 M151 91 V70 M143 78 L151 70 L160 78", "thin")}
+      `;
+    default:
+      return "";
+  }
+}
+
+function renderReferenceBuilding(variant, group) {
+  return commonBuilding(
+    group,
+    variant,
+    `
+      ${referenceShell(variant)}
+      ${groupSymbol(group, variant)}
+      ${streetDetails(variant)}
+    `,
+  );
+}
+
 const renderers = {
-  cityhall: renderCityhall,
-  reserve: renderReserve,
-  etf: renderEtf,
-  dividend: renderDividend,
-  semiconductor: renderSemiconductor,
-  manufacturing: renderManufacturing,
-  heavy: renderHeavy,
-  shipyard: renderShipyard,
-  energy: renderEnergy,
-  platform: renderPlatform,
+  cityhall: renderReferenceBuilding,
+  reserve: renderReferenceBuilding,
+  etf: renderReferenceBuilding,
+  dividend: renderReferenceBuilding,
+  semiconductor: renderReferenceBuilding,
+  manufacturing: renderReferenceBuilding,
+  heavy: renderReferenceBuilding,
+  shipyard: renderReferenceBuilding,
+  energy: renderReferenceBuilding,
+  platform: renderReferenceBuilding,
 };
 
 function renderBoard() {

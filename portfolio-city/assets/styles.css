@@ -3147,3 +3147,177 @@ body[data-market-session="sunset"] .building.illustration {
     min-height: auto;
   }
 }
+
+/* Seoul map background pass */
+.city-map {
+  background:
+    linear-gradient(118deg, transparent 0 36%, rgba(174, 139, 82, 0.26) 37% 42%, transparent 43%),
+    linear-gradient(28deg, transparent 0 44%, rgba(174, 139, 82, 0.22) 45% 49%, transparent 50%),
+    radial-gradient(ellipse at 42% 52%, rgba(255, 253, 244, 0.28), transparent 37%),
+    radial-gradient(circle at 18% 26%, rgba(255, 253, 244, 0.23), transparent 14%),
+    radial-gradient(circle at 82% 78%, rgba(255, 253, 244, 0.2), transparent 15%),
+    repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 46px),
+    linear-gradient(180deg, #b8d493, #79b86b 52%, #5c9d59);
+}
+
+.city-map::after {
+  right: auto;
+  left: -11%;
+  bottom: 25%;
+  z-index: 0;
+  width: 124%;
+  height: 94px;
+  border-radius: 45% 58% 47% 53%;
+  background:
+    linear-gradient(90deg, transparent 0 11%, rgba(255, 255, 255, 0.54) 11% 12.4%, transparent 12.4% 30%, rgba(255, 255, 255, 0.45) 30% 31.2%, transparent 31.2% 55%, rgba(255, 255, 255, 0.48) 55% 56.4%, transparent 56.4% 76%, rgba(255, 255, 255, 0.42) 76% 77.2%, transparent 77.2%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 42%),
+    #74bfd3;
+  transform: rotate(-9deg);
+  box-shadow:
+    inset 0 -10px 0 rgba(48, 123, 150, 0.22),
+    0 9px 18px rgba(36, 70, 42, 0.14);
+  opacity: 0.88;
+}
+
+.seoul-river {
+  left: -8%;
+  top: 51%;
+  z-index: 0;
+  width: 116%;
+  height: 58px;
+  border-radius: 999px 48% 999px 52%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 47%),
+    #6fb8cf;
+  transform: rotate(-10deg);
+  box-shadow:
+    inset 0 -8px 0 rgba(46, 124, 146, 0.2),
+    0 8px 16px rgba(39, 84, 75, 0.13);
+}
+
+.seoul-river::before,
+.seoul-river::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 80px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 253, 244, 0.64);
+  box-shadow: 0 11px 0 rgba(255, 253, 244, 0.44);
+}
+
+.seoul-river::before {
+  left: 20%;
+}
+
+.seoul-river::after {
+  right: 22%;
+}
+
+.seoul-bridge {
+  z-index: 1;
+  width: 92px;
+  height: 12px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 253, 244, 0.92) 0 8px, rgba(70, 105, 83, 0.7) 8px 11px),
+    #fffdf4;
+  box-shadow: 0 5px 10px rgba(42, 76, 50, 0.16);
+}
+
+.bridge-1 {
+  left: 24%;
+  top: 52%;
+  transform: rotate(69deg);
+}
+
+.bridge-2 {
+  right: 26%;
+  top: 48%;
+  transform: rotate(68deg);
+}
+
+.seoul-namsan {
+  left: 47%;
+  top: 18%;
+  z-index: 1;
+  width: 56px;
+  height: 82px;
+  border-radius: 999px 999px 12px 12px;
+  background:
+    radial-gradient(circle at 50% 14%, #fff0a6 0 6px, transparent 7px),
+    linear-gradient(90deg, transparent 24px, #526f68 24px 32px, transparent 32px),
+    linear-gradient(180deg, transparent 0 24px, #6a8976 24px 66px, transparent 66px),
+    radial-gradient(ellipse at 50% 88%, #5d905f 0 25px, transparent 26px);
+  filter: drop-shadow(0 9px 10px rgba(36, 70, 42, 0.2));
+}
+
+.seoul-namsan::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 31px;
+  width: 24px;
+  height: 14px;
+  border: 3px solid #526f68;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.seoul-lotte {
+  right: 12%;
+  top: 19%;
+  z-index: 1;
+  width: 52px;
+  height: 112px;
+  background:
+    linear-gradient(90deg, transparent 0 18px, rgba(255, 253, 244, 0.42) 18px 22px, transparent 22px 30px, rgba(255, 253, 244, 0.32) 30px 34px, transparent 34px),
+    linear-gradient(180deg, #88b6c9, #4d8498);
+  clip-path: polygon(44% 0, 58% 0, 72% 24%, 72% 100%, 28% 100%, 28% 24%);
+  opacity: 0.78;
+  box-shadow: inset 0 -10px 0 rgba(39, 96, 111, 0.18);
+}
+
+.seoul-mountain {
+  z-index: 0;
+  height: 54px;
+  border-radius: 52% 48% 18px 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 48%),
+    #6d9a5c;
+  box-shadow: inset 0 -10px 0 rgba(37, 81, 44, 0.17);
+}
+
+.mountain-north {
+  left: 5%;
+  top: 16%;
+  width: 136px;
+}
+
+.mountain-south {
+  right: 8%;
+  bottom: 13%;
+  width: 118px;
+  transform: scale(0.88);
+}
+
+.deco-water {
+  display: none;
+}
+
+body[data-market-session="sunset"] .seoul-river,
+body[data-market-session="sunset"] .city-map::after {
+  background:
+    linear-gradient(180deg, rgba(255, 229, 196, 0.28), transparent 45%),
+    #87afbb;
+}
+
+@media (max-width: 620px) {
+  .seoul-lotte,
+  .seoul-namsan,
+  .seoul-bridge,
+  .seoul-mountain {
+    display: none;
+  }
+}

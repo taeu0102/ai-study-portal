@@ -168,15 +168,48 @@ h1 {
 }
 
 .art-frame {
+  position: relative;
   display: grid;
   place-items: center;
   min-height: 186px;
   border-bottom: 1px solid rgba(112, 134, 111, 0.24);
   background:
     linear-gradient(115deg, transparent 0 38%, rgba(174, 139, 82, 0.24) 39% 44%, transparent 45%),
+    linear-gradient(28deg, transparent 0 46%, rgba(96, 154, 187, 0.38) 47% 57%, transparent 58%),
     radial-gradient(ellipse at 50% 72%, rgba(255, 253, 244, 0.5), transparent 42%),
     repeating-linear-gradient(30deg, rgba(255, 255, 255, 0.15) 0 2px, transparent 2px 36px),
     linear-gradient(180deg, #b9d797, #78b967 58%, #5b9b58);
+  overflow: hidden;
+}
+
+.art-frame::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 18px;
+  height: 34px;
+  border-radius: 50% 50% 42% 58%;
+  background:
+    linear-gradient(90deg, transparent 0 12%, rgba(255, 255, 255, 0.62) 12% 14%, transparent 14% 34%, rgba(255, 255, 255, 0.54) 34% 36%, transparent 36% 66%, rgba(255, 255, 255, 0.54) 66% 68%, transparent 68%),
+    rgba(101, 177, 202, 0.58);
+  transform: rotate(-8deg);
+  opacity: 0.78;
+}
+
+.art-frame::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 76px;
+  height: 42px;
+  background:
+    linear-gradient(90deg, transparent 0 6px, rgba(45, 86, 76, 0.34) 6px 11px, transparent 11px 18px, rgba(45, 86, 76, 0.28) 18px 25px, transparent 25px),
+    linear-gradient(180deg, transparent 0 18px, rgba(45, 86, 76, 0.32) 18px 22px, transparent 22px),
+    radial-gradient(circle at 78% 15%, rgba(255, 241, 175, 0.85) 0 4px, transparent 5px);
+  clip-path: polygon(0 100%, 0 60%, 10% 60%, 10% 42%, 23% 42%, 23% 18%, 38% 18%, 38% 56%, 52% 56%, 52% 35%, 64% 35%, 64% 4%, 78% 4%, 78% 50%, 100% 50%, 100% 100%);
+  opacity: 0.58;
 }
 
 .variant-copy {
@@ -198,6 +231,8 @@ h1 {
 }
 
 .building-svg {
+  position: relative;
+  z-index: 2;
   width: min(100%, 218px);
   height: 186px;
   overflow: visible;
@@ -233,9 +268,23 @@ h1 {
   stroke-width: 1.5;
 }
 
+.building-svg .mini-han-river {
+  fill: rgba(99, 178, 202, 0.72);
+  stroke: rgba(42, 117, 145, 0.34);
+  stroke-width: 1.8;
+}
+
 .building-svg .body,
 .building-svg .greenhouse {
   fill: var(--primary);
+}
+
+.building-svg .secondary {
+  fill: color-mix(in srgb, var(--primary) 72%, #fffdf4);
+}
+
+.building-svg .tertiary {
+  fill: color-mix(in srgb, var(--extra) 75%, #fffdf4);
 }
 
 .building-svg .side,
@@ -250,6 +299,10 @@ h1 {
   fill: var(--accent);
 }
 
+.building-svg .facade {
+  filter: drop-shadow(0 5px 0 rgba(33, 58, 39, 0.12));
+}
+
 .building-svg .window,
 .building-svg .clock,
 .building-svg .coin {
@@ -259,8 +312,27 @@ h1 {
 
 .building-svg .door,
 .building-svg .vault,
-.building-svg .bay {
+.building-svg .bay,
+.building-svg .storefront {
   fill: #694a32;
+}
+
+.building-svg .sign {
+  fill: rgba(255, 253, 244, 0.92);
+  stroke: rgba(36, 66, 43, 0.5);
+  stroke-width: 1.6;
+}
+
+.building-svg .awning {
+  fill: color-mix(in srgb, var(--extra) 72%, #fffdf4);
+}
+
+.building-svg .awning-line,
+.building-svg .street-lamp,
+.building-svg .factory-saw {
+  fill: none;
+  stroke: #24422b;
+  stroke-width: 2.6;
 }
 
 .building-svg .flag {
@@ -298,6 +370,15 @@ h1 {
 
 .building-svg .tree {
   fill: var(--extra);
+}
+
+.building-svg .street-tree {
+  fill: #5cae5d;
+}
+
+.building-svg .tree-trunk {
+  fill: #8b5b2f;
+  stroke-width: 1.6;
 }
 
 .building-svg .water {
@@ -372,8 +453,8 @@ h1 {
   fill: var(--extra);
 }
 
-.theme-heavy .art-frame {
-  background: #000;
+.building-svg .facade-window {
+  fill: #fff0b8;
 }
 
 @media (max-width: 1180px) {
