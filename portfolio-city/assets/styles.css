@@ -2641,6 +2641,330 @@ body[data-market-session="sunset"] .building.illustration {
   }
 }
 
+/* Original pastel building art pass */
+.building-art {
+  filter: drop-shadow(0 12px 10px rgba(25, 56, 34, 0.14));
+}
+
+.building-art path,
+.building-art rect,
+.building-art circle {
+  stroke: #1f3527;
+  stroke-width: 2.6;
+}
+
+.building-art .iso-shadow {
+  fill: rgba(24, 49, 29, 0.18);
+  stroke: none;
+}
+
+.building-art .lot-tile {
+  fill: #a8d489;
+  stroke: rgba(31, 53, 39, 0.34);
+}
+
+.building-art .lot-path {
+  fill: rgba(171, 128, 73, 0.28);
+  stroke: rgba(31, 53, 39, 0.18);
+  stroke-width: 1.4;
+}
+
+.building-art .plaza-tile {
+  fill: #dfd8b3;
+  stroke: rgba(31, 53, 39, 0.25);
+}
+
+.building-art .tree-trunk {
+  fill: #8b5f36;
+  stroke-width: 1.6;
+}
+
+.building-art .tree-crown {
+  fill: #5cae5d;
+  stroke-width: 1.8;
+}
+
+.building-art .hall-base,
+.building-art .hall-wing,
+.building-art .hall-tower {
+  fill: #d7b064;
+}
+
+.building-art .hall-side,
+.building-art .bank-side,
+.building-art .treasury-side,
+.building-art .tech-side,
+.building-art .factory-side,
+.building-art .steel-side,
+.building-art .bond-tower-side {
+  fill: #8aa391;
+}
+
+.building-art .hall-roof,
+.building-art .bank-roof,
+.building-art .treasury-dome,
+.building-art .bond-roof,
+.building-art .plant-roof,
+.building-art .market-roof,
+.building-art .complex-roof,
+.building-art .memory-roof {
+  fill: #8d5f43;
+}
+
+.building-art .clock,
+.building-art .coin {
+  fill: #fff0a6;
+}
+
+.building-art .clock-hand,
+.building-art .dome-ribs,
+.building-art .girder,
+.building-art .ship-stripe,
+.building-art .garage-lines,
+.building-art .antenna,
+.building-art .robot-claw,
+.building-art .molten-stream {
+  fill: none;
+  stroke: #1f3527;
+  stroke-width: 2.3;
+}
+
+.building-art .warm-window,
+.building-art .blue-window,
+.building-art .green-window {
+  stroke: rgba(31, 53, 39, 0.42);
+  stroke-width: 1.4;
+}
+
+.building-art .warm-window {
+  fill: #fff0b8;
+}
+
+.building-art .blue-window {
+  fill: #bce8f1;
+}
+
+.building-art .green-window {
+  fill: #cbe9c2;
+}
+
+.building-art .main-door,
+.building-art .garage-door {
+  fill: #68462f;
+}
+
+.building-art .bank-base,
+.building-art .treasury-base {
+  fill: #cfaa62;
+}
+
+.building-art .bank-pillars,
+.building-art .bank-steps,
+.building-art .treasury-columns,
+.building-art .pillars {
+  fill: none;
+  stroke: #fff2c8;
+  stroke-width: 4.2;
+}
+
+.building-art .bond-tower {
+  fill: #f3e6bd;
+}
+
+.building-art .bond-tower-side {
+  fill: #cfbd8b;
+}
+
+.building-art .bond-fold,
+.building-art .bond-lines {
+  fill: none;
+  stroke: #8f7344;
+  stroke-width: 2.4;
+}
+
+.building-art .seal {
+  fill: #d95745;
+}
+
+.building-art .ribbon {
+  fill: #b84236;
+}
+
+.building-art .tech-face {
+  fill: #61b7c9;
+}
+
+.building-art .tech-side {
+  fill: #338797;
+}
+
+.building-art .tech-roof {
+  fill: #d1f0f1;
+}
+
+.building-art .tech-core {
+  fill: #2f8f86;
+}
+
+.building-art .chip-pins,
+.building-art .circuit,
+.building-art .stack-lines,
+.building-art .pins {
+  fill: none;
+  stroke: #1f3527;
+  stroke-width: 2.5;
+}
+
+.building-art .memory {
+  fill: #54b8a8;
+}
+
+.building-art .memory-back {
+  fill: #8bd6c7;
+}
+
+.building-art .memory-mid {
+  fill: #2e98a4;
+}
+
+.building-art .memory-front {
+  fill: #67c8bc;
+}
+
+.building-art .factory-roof {
+  fill: #5b8bd4;
+}
+
+.building-art .factory-side {
+  fill: #4a6fa8;
+}
+
+.building-art .factory-front {
+  fill: #8ab0e5;
+}
+
+.building-art .conveyor,
+.building-art .arm {
+  fill: none;
+  stroke: #8b5b2f;
+  stroke-width: 4.7;
+}
+
+.building-art .wheel {
+  fill: #27354c;
+}
+
+.building-art .steel-base {
+  fill: #866252;
+}
+
+.building-art .steel-side {
+  fill: #63483f;
+}
+
+.building-art .furnace {
+  fill: #a9674f;
+}
+
+.building-art .chimney {
+  fill: #745142;
+}
+
+.building-art .chimney.thin {
+  fill: #624238;
+}
+
+.building-art .smoke,
+.building-art .steam {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 6.3;
+}
+
+.building-art .molten {
+  fill: #ffb03d;
+  stroke: #b95724;
+}
+
+.building-art .molten-stream {
+  stroke: #ffcf67;
+}
+
+.building-art .water-ground {
+  fill: #83c9dc;
+}
+
+.building-art .dock {
+  fill: #7c5f45;
+}
+
+.building-art .dock-side {
+  fill: #5e4432;
+}
+
+.building-art .ship {
+  fill: #f6f3e8;
+}
+
+.building-art .ship-deck {
+  fill: #3e89bd;
+}
+
+.building-art .ship-stripe,
+.building-art .waves {
+  stroke: #ffffff;
+  stroke-width: 3.5;
+}
+
+.building-art .crane,
+.building-art .hook {
+  fill: none;
+  stroke: #d49438;
+  stroke-width: 5.2;
+}
+
+.building-art .cooling {
+  fill: #dce3d8;
+}
+
+.building-art .plant {
+  fill: #dfa944;
+}
+
+.building-art .solar {
+  fill: #5d94d6;
+}
+
+.building-art .bolt {
+  fill: #ffdc4d;
+}
+
+.building-art .basket {
+  fill: #e8c56a;
+}
+
+.building-art .complex-tower.a,
+.building-art .market-block.a {
+  fill: #68b76a;
+}
+
+.building-art .complex-tower.b,
+.building-art .market-block.b {
+  fill: #4aa4ad;
+}
+
+.building-art .complex-tower.c,
+.building-art .market-block.c {
+  fill: #6d91d7;
+}
+
+.building-art .connector,
+.building-art .plaza {
+  fill: none;
+  stroke: #496b56;
+  stroke-width: 3.4;
+}
+
 /* Filled game composition pass */
 .dashboard {
   --play-height: calc(100vh - 92px);
